@@ -1,0 +1,12 @@
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\bin\Debug\net6.0\CrossCuting.deps.json
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\bin\Debug\net6.0\CrossCuting.dll
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\bin\Debug\net6.0\CrossCuting.pdb
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\obj\Debug\net6.0\CrossCuting.csproj.AssemblyReference.cache
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\obj\Debug\net6.0\CrossCuting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\obj\Debug\net6.0\CrossCuting.AssemblyInfoInputs.cache
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\obj\Debug\net6.0\CrossCuting.AssemblyInfo.cs
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\obj\Debug\net6.0\CrossCuting.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\obj\Debug\net6.0\CrossCuting.dll
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\obj\Debug\net6.0\refint\CrossCuting.dll
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\obj\Debug\net6.0\CrossCuting.pdb
+C:\Users\Usuario\source\repos\MusicApp\CrossCuting\obj\Debug\net6.0\ref\CrossCuting.dll

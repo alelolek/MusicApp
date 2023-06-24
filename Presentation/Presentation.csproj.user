@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="View\AlbumAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\ArtistAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\ArtistUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\CategoriesUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\CategoryAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\FormularioPrueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\ForYouUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\HomeAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\HomeUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\AlbumUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\SongAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\SongUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\UploadSong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\UsersAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
