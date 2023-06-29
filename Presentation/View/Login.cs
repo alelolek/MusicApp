@@ -1,63 +1,97 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿
+using Business.Interface;
+using Business.Services;
+using CrossCuting.DTO;
 
 namespace Presentation.View
 {
 	public partial class Login : Form
 	{
+		private IAccountService accountService;
+		public event EventHandler ButtonClick;
 		public Login()
 		{
 			InitializeComponent();
+			accountService = new AccountService();
+
 		}
 
 		private void label3_Click(object sender, EventArgs e)
 		{
 			Register viewRegister = new Register();
 			viewRegister.Show();
+			this.Hide();
 		}
 
-		private void textBox1_MouseLeave(object sender, EventArgs e)
+
+		private void button1_Click(object sender, EventArgs e)
 		{
-			if (tbUser.Text == "")
+			var response = accountService.GetAllAccount();
+			HomeUser homeUser = new HomeUser();
+			HomeAdmin homeAdmin = new HomeAdmin();
+
+			AccountDto accountDto = response.FirstOrDefault(a => a.username == txtUser.Text);
+
+			if (accountDto.username != null && accountDto.password == txtPassword.Text)
 			{
-				tbUser.Text = "Username";
-				tbUser.ForeColor = System.Drawing.SystemColors.GrayText;
+				if (accountDto.rol == "Administrador")
+					homeAdmin.Show();
+				else
+					homeUser.Show();
+				this.Hide();
+			}
+			else
+			{
+				MessageBox.Show("Credenciales incorrectas. Inténtalo de nuevo.");
+			}
+
+		}
+
+		private void tbUser_Enter(object sender, EventArgs e)
+		{
+			if (txtUser.Text == "Username")
+			{
+				txtUser.Text = "";
+				txtUser.ForeColor = Color.Black;
 			}
 		}
 
-		private void tbUser_MouseEnter(object sender, EventArgs e)
+		private void txtUser_Leave(object sender, EventArgs e)
 		{
-			if (tbUser.Text == "Username")
+			if (txtUser.Text == "")
 			{
-				tbUser.Text = "";
-				tbUser.ForeColor = System.Drawing.SystemColors.WindowText;
+				txtUser.Text = "Username";
+				txtUser.ForeColor = Color.LightGray;
 			}
 		}
 
-		private void textBox2_MouseLeave(object sender, EventArgs e)
+		private void txtPassword_Enter(object sender, EventArgs e)
 		{
-			if (tbPassword.Text == "")
+			if (txtPassword.Text == "Password")
 			{
-				tbPassword.Text = "Password";
-				tbPassword.ForeColor = System.Drawing.SystemColors.GrayText;
+				txtPassword.Text = "";
+				txtPassword.ForeColor = Color.Black;
+				txtPassword.UseSystemPasswordChar = true;
 			}
 		}
 
-		private void textBox2_MouseEnter(object sender, EventArgs e)
+		private void txtPassword_Leave(object sender, EventArgs e)
 		{
-			if (tbPassword.Text == "Password")
+			if (txtPassword.Text == "")
 			{
-				tbPassword.Text = "";
-				tbPassword.ForeColor = System.Drawing.SystemColors.WindowText;
+				txtPassword.Text = "Password";
+				txtPassword.ForeColor = Color.LightGray;
+				txtPassword.UseSystemPasswordChar = false;
 			}
+		}
+
+		private void Login_Load(object sender, EventArgs e)
+		{
+		}
+
+		private void pictureBox2_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

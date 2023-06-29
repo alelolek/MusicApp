@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrossCuting.DTO;
 
 namespace Presentation.View
 {
@@ -17,6 +18,9 @@ namespace Presentation.View
 			InitializeComponent();
 			Home home = new Home();
 			addUserControl(home);
+
+			//AccountDto account = new AccountDto();
+			//label1.Text = "hol2";
 		}
 
 		private void addUserControl(UserControl userControl)
@@ -69,6 +73,17 @@ namespace Presentation.View
 			{
 				this.Close();
 			}
+		}
+
+		private void HomeUser_Load(object sender, EventArgs e)
+		{
+
+			Login login = new Login();
+		}
+
+		private void pictureBox5_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

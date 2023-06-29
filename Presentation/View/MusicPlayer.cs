@@ -7,21 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using WMPLib;
 
 namespace Presentation.View
 {
 	public partial class MusicPlayer : Form
 	{
-		//WMPLib
+		WindowsMediaPlayer player = new WindowsMediaPlayer();
 		public MusicPlayer()
 		{
 			InitializeComponent();
 		}
 
-		private void pictureBox1_Click(object sender, EventArgs e)
-		{
 
-		}
 	}
 }

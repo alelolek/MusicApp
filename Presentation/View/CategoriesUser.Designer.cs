@@ -32,7 +32,7 @@
 			label12 = new Label();
 			textBox1 = new TextBox();
 			pictureBox1 = new PictureBox();
-			panel1 = new Panel();
+			flowLayoutPanel1 = new FlowLayoutPanel();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			SuspendLayout();
 			// 
@@ -54,7 +54,6 @@
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(266, 33);
 			textBox1.TabIndex = 4;
-			textBox1.Text = "Buscar";
 			// 
 			// pictureBox1
 			// 
@@ -68,24 +67,25 @@
 			pictureBox1.TabStop = false;
 			pictureBox1.Click += pictureBox1_Click;
 			// 
-			// panel1
+			// flowLayoutPanel1
 			// 
-			panel1.Location = new Point(100, 227);
-			panel1.Name = "panel1";
-			panel1.Size = new Size(136, 111);
-			panel1.TabIndex = 6;
+			flowLayoutPanel1.Location = new Point(36, 222);
+			flowLayoutPanel1.Name = "flowLayoutPanel1";
+			flowLayoutPanel1.Size = new Size(629, 376);
+			flowLayoutPanel1.TabIndex = 6;
 			// 
 			// CategoriesUser
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
-			Controls.Add(panel1);
+			Controls.Add(flowLayoutPanel1);
 			Controls.Add(pictureBox1);
 			Controls.Add(textBox1);
 			Controls.Add(label12);
 			Name = "CategoriesUser";
 			Size = new Size(705, 650);
+			Load += CategoriesUser_Load;
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
@@ -96,6 +96,6 @@
 		private Label label12;
 		private TextBox textBox1;
 		private PictureBox pictureBox1;
-		private Panel panel1;
+		private FlowLayoutPanel flowLayoutPanel1;
 	}
 }

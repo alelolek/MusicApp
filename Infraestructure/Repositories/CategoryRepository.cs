@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
+using System.Security.Principal;
 using CrossCuting.DTO;
 using CrossCuting.DTO.Standar;
 using Infraestructure.DataBase;
@@ -28,13 +24,15 @@ namespace Infraestructure.Repositories
 		{
 			connection.Open();
 			using (SqlDataReader reader = command.ExecuteReader())
-				{ 
-					Category category = new Category();
-					category.id = reader.GetInt32(0);
-					category.name = reader.GetString(1);
-					var categoryDto = mapper.MapEntityToDto(category);
-					categoriesDto.Add(categoryDto);
-				
+				{
+					while (reader.Read())
+					{
+						Category category = new Category();
+						category.Id = reader.GetInt32(0);
+						category.Name = reader.GetString(1);
+						var categoryDto = mapper.MapEntityToDto(category);
+						categoriesDto.Add(categoryDto);
+					}
 				}
 			connection.Close();
 		}
@@ -45,7 +43,7 @@ namespace Infraestructure.Repositories
 
 			try
 			{
-				var query = "DELETE FROM Album WHERE id = @id";
+				var query = "DELETE FROM Category WHERE id = @id";
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
 					command.Parameters.AddWithValue("@id", categoryId);
@@ -61,7 +59,7 @@ namespace Infraestructure.Repositories
 			return response;
 		}
 
-		public List<CategoryDto> GetAll()
+		public List<CategoryDto> Get(Func<CategoryDto, bool>? filter = null)
 		{
 			List<CategoryDto> categoryDto = new List<CategoryDto>();
 
@@ -77,6 +75,9 @@ namespace Infraestructure.Repositories
 			{
 				throw;
 			}
+			if (filter != null)
+				categoryDto = categoryDto.Where(filter).ToList();
+
 			return categoryDto;
 		}
 
@@ -87,10 +88,10 @@ namespace Infraestructure.Repositories
 
 			try
 			{
-				var query = "INSERTE INTO Category(name) VALUES(@name)";
+				var query = "INSERT INTO Category(name) VALUES(@name)";
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
-					command.Parameters.AddWithValue("@name", category.name);
+					command.Parameters.AddWithValue("@name", category.Name);
 					connection.Open();
 					command.ExecuteNonQuery();
 					connection.Close();
@@ -113,7 +114,8 @@ namespace Infraestructure.Repositories
 				var query = "UPDATE Category SET name = @name  WHERE id = @id";
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
-					command.Parameters.AddWithValue("@name", category.name);
+					command.Parameters.AddWithValue("@id", category.Id);
+					command.Parameters.AddWithValue("@name", category.Name);
 					connection.Open();
 					command.ExecuteNonQuery();
 					connection.Close();

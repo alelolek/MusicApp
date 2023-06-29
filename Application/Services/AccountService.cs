@@ -1,4 +1,5 @@
-﻿using CrossCuting.DTO;
+﻿using Business.Interface;
+using CrossCuting.DTO;
 using CrossCuting.DTO.Standar;
 using Infraestructure.Entities;
 using Infraestructure.Interface;
@@ -7,13 +8,15 @@ using Infraestructure.Repositories;
 
 namespace Business.Services
 {
-    public class AccountService
+    public class AccountService : IAccountService
     {
         private readonly IRepository<AccountDto> accountRepository;
         public AccountService()
         {
             accountRepository = new AccountRepository();
         }
+
+
 
         public ResponseDto CreateAccount(AccountDto accountDto)
         {
@@ -44,12 +47,12 @@ namespace Business.Services
             return response;
         }
 
-        public ResponseDto DeleteAccount(AccountDto accountDto)
+        public ResponseDto DeleteAccount(int accountId)
         {
             var response = new ResponseDto();
             try
             {
-                response = accountRepository.Delete(accountDto.id);
+                response = accountRepository.Delete(accountId);
             }
             catch (Exception ex)
             {
@@ -58,5 +61,21 @@ namespace Business.Services
             return response;
         }
 
-    }
+		public List<AccountDto> GetAllAccount()
+		{
+			List<AccountDto> account;
+			try
+			{
+				account = accountRepository.Get();
+			}
+			catch
+			{
+				throw;
+			}
+			return account;
+		}
+
+	
+		
+	}
 }

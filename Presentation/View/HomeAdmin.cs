@@ -1,5 +1,7 @@
 ﻿
 
+using Business.Interface;
+using Business.Services;
 using CrossCuting.DTO;
 using Infraestructure.Entities;
 using Infraestructure.Repositories;
@@ -7,14 +9,15 @@ using System.Windows.Forms;
 
 namespace Presentation.View
 {
-	
+
 	public partial class HomeAdmin : Form
 	{
-		AccountRepository accountRepository = new AccountRepository();
-		AlbumRepository albumRepository = new AlbumRepository();
+
+		private IAccountService accountService;
 		public HomeAdmin()
 		{
 			InitializeComponent();
+			accountService = new AccountService();
 		}
 		public void addUserControl(UserControl userControl)
 		{
@@ -29,17 +32,6 @@ namespace Presentation.View
 
 		private void label8_Click(object sender, EventArgs e)
 		{
-			SongAdmin song = new SongAdmin();
-			addUserControl(song);
-
-			DataGridView dgvSongs = song.dgvSongs;
-
-			dgvSongs.Columns.Add("id", "Id");
-			dgvSongs.Columns.Add("name", "Name Song");
-			dgvSongs.Columns.Add("Artist", "Artist");
-			dgvSongs.Columns.Add("Album", "Album");
-			dgvSongs.Columns.Add("Category", "Category");
-
 
 		}
 
@@ -47,43 +39,13 @@ namespace Presentation.View
 		{
 			UsersAdmin usersAdmin = new UsersAdmin();
 			addUserControl(usersAdmin);
-			DataGridView dgv = usersAdmin.dataGridViewUsers;
 
-			dgv.Columns.Add("id", "Id");
-			dgv.Columns.Add("userName", "Nombre");
-			dgv.Columns.Add("email", "Email");
-			dgv.Columns.Add("rol", "Rol");
-			List<AccountDto> accounts = accountRepository.GetAll();
-
-			// Limpiar el DataGridView antes de mostrar los datos
-			dgv.Rows.Clear();
-
-			foreach (var account in accounts)
-			{
-				// Agregar una fila al DataGridView con los datos de la cuenta
-				dgv.Rows.Add(account.id, account.username, account.email, account.rol);
-			}
 		}
 
 		private void label5_Click(object sender, EventArgs e)
 		{
 			AlbumAdmin albumAdmin = new AlbumAdmin();
 			addUserControl(albumAdmin);
-
-			DataGridView dgvAlbum = albumAdmin.dataGridViewAlbums;
-
-			dgvAlbum.Columns.Add("id", "Id");
-			dgvAlbum.Columns.Add("name", "Name");
-			dgvAlbum.Columns.Add("urlImage", "Url Image");
-			List<Album> albums = albumRepository.GetAll();
-
-			dgvAlbum.Rows.Clear();
-
-			foreach (var album in albums)
-			{
-				// Agregar una fila al DataGridView con los datos de la cuenta
-				dgvAlbum.Rows.Add(album.id, album.name, album.urlImage);
-			}
 		}
 
 		private void label6_Click(object sender, EventArgs e)
@@ -105,6 +67,55 @@ namespace Presentation.View
 			{
 				this.Close();
 			}
+		}
+
+		private void HomeAdmin_Load(object sender, EventArgs e)
+		{
+			Login login = new Login();
+			login.Close();
+		}
+
+
+
+		private void pictureBox5_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnUser_Click(object sender, EventArgs e)
+		{
+			UsersAdmin usersAdmin = new UsersAdmin();
+			addUserControl(usersAdmin);
+		}
+
+		private void btnAlbum_Click(object sender, EventArgs e)
+		{
+			AlbumAdmin albumAdmin = new AlbumAdmin();
+			addUserControl(albumAdmin);
+		}
+
+		private void btnArtist_Click(object sender, EventArgs e)
+		{
+			ArtistAdmin artistAdmin = new ArtistAdmin();
+			addUserControl(artistAdmin);
+		}
+
+		private void btnCategory_Click(object sender, EventArgs e)
+		{
+			CategoryAdmin categoryAdmin = new CategoryAdmin();
+			addUserControl(categoryAdmin);
+		}
+
+		private void btnSong_Click(object sender, EventArgs e)
+		{
+			SongAdmin song = new SongAdmin();
+			addUserControl(song);
+		}
+
+		private void panelAcUser_Click(object sender, EventArgs e)
+		{
+			HomeUser homeUser = new HomeUser();
+			homeUser.Show();
 		}
 	}
 }

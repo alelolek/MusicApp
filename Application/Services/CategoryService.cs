@@ -7,10 +7,11 @@ using CrossCuting.DTO.Standar;
 using CrossCuting.DTO;
 using Infraestructure.Interface;
 using Infraestructure.Repositories;
+using Business.Interface;
 
 namespace Business.Services
 {
-	public class CategoryService
+	public class CategoryService : ICategoryService
 	{
 		private readonly IRepository<CategoryDto> categoryRepository;
 
@@ -19,7 +20,7 @@ namespace Business.Services
 			categoryRepository = new CategoryRepository();
 		}
 
-		public ResponseDto CreateAlbum(CategoryDto categoryDto)
+		public ResponseDto CreateCategory(CategoryDto categoryDto)
 		{
 			var response = new ResponseDto();
 			try
@@ -34,7 +35,7 @@ namespace Business.Services
 			return response;
 		}
 
-		public ResponseDto EditAlbum(CategoryDto categoryDto)
+		public ResponseDto EditCategory(CategoryDto categoryDto)
 		{
 			var response = new ResponseDto();
 			try
@@ -49,12 +50,12 @@ namespace Business.Services
 			return response;
 		}
 
-		public ResponseDto DeleteAlbum(CategoryDto categoryDto)
+		public ResponseDto DeleteCategory(int categoryId)
 		{
 			var response = new ResponseDto();
 			try
 			{
-				response = categoryRepository.Delete(categoryDto.id);
+				response = categoryRepository.Delete(categoryId);
 			}
 			catch (Exception ex)
 			{
@@ -62,6 +63,20 @@ namespace Business.Services
 				response.Errors.Add(string.Empty, ex.Message.Substring(0, Math.Min(ex.Message.Length, 250)));
 			}
 			return response;
+		}
+
+		public List<CategoryDto> GetAllCategory()
+		{
+			List<CategoryDto> category;
+			try
+			{
+				category = categoryRepository.Get();
+			}
+			catch
+			{
+				throw;
+			}
+			return category;
 		}
 	}
 }

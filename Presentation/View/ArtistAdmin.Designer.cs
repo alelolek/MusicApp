@@ -30,19 +30,22 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArtistAdmin));
 			label1 = new Label();
-			pictureBox1 = new PictureBox();
-			pictureBox2 = new PictureBox();
-			pictureBox3 = new PictureBox();
+			btnSave = new PictureBox();
+			btnDelete = new PictureBox();
+			btnEdit = new PictureBox();
 			textBox1 = new TextBox();
-			textBox2 = new TextBox();
+			txtName = new TextBox();
 			label2 = new Label();
 			pictureBox4 = new PictureBox();
-			dataGridView1 = new DataGridView();
-			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+			dataGridViewArtists = new DataGridView();
+			panel1 = new Panel();
+			btnUploadImage = new Button();
+			txtId = new TextBox();
+			((System.ComponentModel.ISupportInitialize)btnSave).BeginInit();
+			((System.ComponentModel.ISupportInitialize)btnDelete).BeginInit();
+			((System.ComponentModel.ISupportInitialize)btnEdit).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+			((System.ComponentModel.ISupportInitialize)dataGridViewArtists).BeginInit();
 			SuspendLayout();
 			// 
 			// label1
@@ -56,62 +59,66 @@
 			label1.TabIndex = 4;
 			label1.Text = "ARTISTS";
 			// 
-			// pictureBox1
+			// btnSave
 			// 
-			pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-			pictureBox1.Location = new Point(55, 143);
-			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(55, 50);
-			pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox1.TabIndex = 5;
-			pictureBox1.TabStop = false;
+			btnSave.BorderStyle = BorderStyle.FixedSingle;
+			btnSave.Image = (Image)resources.GetObject("btnSave.Image");
+			btnSave.Location = new Point(393, 194);
+			btnSave.Name = "btnSave";
+			btnSave.Size = new Size(55, 50);
+			btnSave.SizeMode = PictureBoxSizeMode.CenterImage;
+			btnSave.TabIndex = 5;
+			btnSave.TabStop = false;
+			btnSave.Click += btnSave_Click;
 			// 
-			// pictureBox2
+			// btnDelete
 			// 
-			pictureBox2.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-			pictureBox2.Location = new Point(258, 143);
-			pictureBox2.Name = "pictureBox2";
-			pictureBox2.Size = new Size(55, 50);
-			pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox2.TabIndex = 6;
-			pictureBox2.TabStop = false;
+			btnDelete.BorderStyle = BorderStyle.FixedSingle;
+			btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
+			btnDelete.Location = new Point(596, 194);
+			btnDelete.Name = "btnDelete";
+			btnDelete.Size = new Size(55, 50);
+			btnDelete.SizeMode = PictureBoxSizeMode.CenterImage;
+			btnDelete.TabIndex = 6;
+			btnDelete.TabStop = false;
+			btnDelete.Click += btnDelete_Click;
 			// 
-			// pictureBox3
+			// btnEdit
 			// 
-			pictureBox3.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-			pictureBox3.Location = new Point(156, 143);
-			pictureBox3.Name = "pictureBox3";
-			pictureBox3.Size = new Size(55, 50);
-			pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox3.TabIndex = 7;
-			pictureBox3.TabStop = false;
+			btnEdit.BorderStyle = BorderStyle.FixedSingle;
+			btnEdit.Image = (Image)resources.GetObject("btnEdit.Image");
+			btnEdit.Location = new Point(499, 194);
+			btnEdit.Name = "btnEdit";
+			btnEdit.Size = new Size(55, 50);
+			btnEdit.SizeMode = PictureBoxSizeMode.CenterImage;
+			btnEdit.TabIndex = 7;
+			btnEdit.TabStop = false;
+			btnEdit.Click += btnEdit_Click;
 			// 
 			// textBox1
 			// 
+			textBox1.BorderStyle = BorderStyle.FixedSingle;
 			textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
 			textBox1.ForeColor = SystemColors.AppWorkspace;
-			textBox1.Location = new Point(426, 199);
+			textBox1.Location = new Point(393, 286);
 			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(225, 33);
+			textBox1.Size = new Size(258, 33);
 			textBox1.TabIndex = 8;
-			textBox1.Text = "Search";
 			// 
-			// textBox2
+			// txtName
 			// 
-			textBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			textBox2.Location = new Point(428, 123);
-			textBox2.Name = "textBox2";
-			textBox2.Size = new Size(223, 33);
-			textBox2.TabIndex = 9;
+			txtName.BorderStyle = BorderStyle.FixedSingle;
+			txtName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtName.Location = new Point(393, 122);
+			txtName.Name = "txtName";
+			txtName.Size = new Size(258, 33);
+			txtName.TabIndex = 9;
 			// 
 			// label2
 			// 
 			label2.AutoSize = true;
 			label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-			label2.Location = new Point(439, 114);
+			label2.Location = new Point(393, 90);
 			label2.Name = "label2";
 			label2.Size = new Size(82, 17);
 			label2.TabIndex = 10;
@@ -121,43 +128,76 @@
 			// 
 			pictureBox4.BorderStyle = BorderStyle.FixedSingle;
 			pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-			pictureBox4.Location = new Point(612, 199);
+			pictureBox4.Location = new Point(612, 286);
 			pictureBox4.Name = "pictureBox4";
 			pictureBox4.Size = new Size(39, 33);
 			pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
 			pictureBox4.TabIndex = 11;
 			pictureBox4.TabStop = false;
 			// 
-			// dataGridView1
+			// dataGridViewArtists
 			// 
-			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridView1.Location = new Point(55, 279);
-			dataGridView1.Name = "dataGridView1";
-			dataGridView1.RowTemplate.Height = 25;
-			dataGridView1.Size = new Size(596, 220);
-			dataGridView1.TabIndex = 12;
+			dataGridViewArtists.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewArtists.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridViewArtists.Location = new Point(55, 346);
+			dataGridViewArtists.Name = "dataGridViewArtists";
+			dataGridViewArtists.RowTemplate.Height = 25;
+			dataGridViewArtists.Size = new Size(596, 220);
+			dataGridViewArtists.TabIndex = 12;
+			dataGridViewArtists.SelectionChanged += dataGridViewArtists_SelectionChanged;
+			// 
+			// panel1
+			// 
+			panel1.BorderStyle = BorderStyle.FixedSingle;
+			panel1.Location = new Point(83, 102);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(200, 178);
+			panel1.TabIndex = 13;
+			// 
+			// btnUploadImage
+			// 
+			btnUploadImage.Location = new Point(117, 296);
+			btnUploadImage.Name = "btnUploadImage";
+			btnUploadImage.Size = new Size(129, 23);
+			btnUploadImage.TabIndex = 14;
+			btnUploadImage.Text = "Upload Image";
+			btnUploadImage.UseVisualStyleBackColor = true;
+			btnUploadImage.Click += btnUploadImage_Click;
+			// 
+			// txtId
+			// 
+			txtId.BorderStyle = BorderStyle.None;
+			txtId.ForeColor = Color.White;
+			txtId.Location = new Point(546, 60);
+			txtId.Name = "txtId";
+			txtId.Size = new Size(100, 16);
+			txtId.TabIndex = 15;
 			// 
 			// ArtistAdmin
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
-			Controls.Add(dataGridView1);
+			Controls.Add(txtId);
+			Controls.Add(btnUploadImage);
+			Controls.Add(panel1);
+			Controls.Add(dataGridViewArtists);
 			Controls.Add(pictureBox4);
 			Controls.Add(label2);
-			Controls.Add(textBox2);
+			Controls.Add(txtName);
 			Controls.Add(textBox1);
-			Controls.Add(pictureBox3);
-			Controls.Add(pictureBox2);
-			Controls.Add(pictureBox1);
+			Controls.Add(btnEdit);
+			Controls.Add(btnDelete);
+			Controls.Add(btnSave);
 			Controls.Add(label1);
 			Name = "ArtistAdmin";
 			Size = new Size(705, 650);
-			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+			Load += ArtistAdmin_Load;
+			((System.ComponentModel.ISupportInitialize)btnSave).EndInit();
+			((System.ComponentModel.ISupportInitialize)btnDelete).EndInit();
+			((System.ComponentModel.ISupportInitialize)btnEdit).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-			((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+			((System.ComponentModel.ISupportInitialize)dataGridViewArtists).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -165,13 +205,16 @@
 		#endregion
 
 		private Label label1;
-		private PictureBox pictureBox1;
-		private PictureBox pictureBox2;
-		private PictureBox pictureBox3;
+		private PictureBox btnSave;
+		private PictureBox btnDelete;
+		private PictureBox btnEdit;
 		private TextBox textBox1;
-		private TextBox textBox2;
+		private TextBox txtName;
 		private Label label2;
 		private PictureBox pictureBox4;
-		private DataGridView dataGridView1;
+		private DataGridView dataGridViewArtists;
+		private Panel panel1;
+		private Button btnUploadImage;
+		private TextBox txtId;
 	}
 }

@@ -40,7 +40,9 @@
 			name = new Label();
 			textBox1 = new TextBox();
 			label1 = new Label();
+			pictureBox2 = new PictureBox();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			SuspendLayout();
 			// 
 			// button2
@@ -167,11 +169,21 @@
 			label1.TabIndex = 15;
 			label1.Text = "UPLOAD";
 			// 
+			// pictureBox2
+			// 
+			pictureBox2.Image = Properties.Resources.eliminar_simbolo__1_;
+			pictureBox2.Location = new Point(687, 12);
+			pictureBox2.Name = "pictureBox2";
+			pictureBox2.Size = new Size(35, 32);
+			pictureBox2.TabIndex = 27;
+			pictureBox2.TabStop = false;
+			// 
 			// UploadSong
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(734, 561);
+			Controls.Add(pictureBox2);
 			Controls.Add(button2);
 			Controls.Add(button1);
 			Controls.Add(pictureBox1);
@@ -184,9 +196,12 @@
 			Controls.Add(name);
 			Controls.Add(textBox1);
 			Controls.Add(label1);
+			FormBorderStyle = FormBorderStyle.None;
 			Name = "UploadSong";
+			StartPosition = FormStartPosition.CenterScreen;
 			Text = "UploadSong";
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -205,5 +220,6 @@
 		private Label name;
 		private TextBox textBox1;
 		private Label label1;
+		private PictureBox pictureBox2;
 	}
 }

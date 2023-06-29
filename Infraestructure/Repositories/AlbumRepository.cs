@@ -28,9 +28,9 @@ namespace Infraestructure.Repositories
 				while (reader.Read())
 				{
 					Album album = new Album();
-					album.id = reader.GetInt32(0);
-					album.name = reader.GetString(1);
-					album.urlImage = reader.GetString(2);
+					album.Id = reader.GetInt32(0);
+					album.Name = reader.GetString(1);
+					album.UrlImage = reader.GetString(2);
 					var albumDto = mapper.MapEntityToDto(album);
 					albumsDto.Add(albumDto);
 				}
@@ -60,7 +60,7 @@ namespace Infraestructure.Repositories
 			return response;
 		}
 
-		public List<AlbumDto> GetAll()
+		public List<AlbumDto> Get(Func<AlbumDto, bool>? filter = null)
 		{
 			List<AlbumDto> albumsDto = new List<AlbumDto>();
 
@@ -71,11 +71,15 @@ namespace Infraestructure.Repositories
 				{
 					ReadAlbum(command, albumsDto);
 				}
+
+				if (filter != null)
+					albumsDto = albumsDto.Where(filter).ToList();
 			}
 			catch (Exception)
 			{
 				throw;
 			}
+
 			return albumsDto;
 		}
 
@@ -86,11 +90,11 @@ namespace Infraestructure.Repositories
 
 			try
 			{
-				var query = "INSERTE INTO Album(name,urlImage) VALUES(@name,@urlImage)";
+				var query = "INSERT INTO Album(name,urlImage) VALUES(@name,@urlImage)";
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
-					command.Parameters.AddWithValue("@name", album.name);
-					command.Parameters.AddWithValue("@urlImage", album.urlImage);
+					command.Parameters.AddWithValue("@name", album.Name);
+					command.Parameters.AddWithValue("@urlImage", album.UrlImage);
 					connection.Open();
 					command.ExecuteNonQuery();
 					connection.Close();
@@ -113,8 +117,8 @@ namespace Infraestructure.Repositories
 				var query = "UPDATE Album SET name = @name, urlImage = @urlImage WHERE id = @id";
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
-					command.Parameters.AddWithValue("@name", album.name);
-					command.Parameters.AddWithValue("@urlImage", album.urlImage);
+					command.Parameters.AddWithValue("@name", album.Name);
+					command.Parameters.AddWithValue("@urlImage", album.UrlImage);
 					connection.Open();
 					command.ExecuteNonQuery();
 					connection.Close();

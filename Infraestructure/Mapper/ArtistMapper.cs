@@ -15,9 +15,9 @@ namespace Infraestructure.Mapper
 		{
 			return new Artist
 			{
-				id = dto.id,
-				name = dto.name,
-				urlImage = dto.urlImage,
+				Id = dto.Id,
+				Name = dto.Name,
+				UrlImage = dto.UrlImage,
 			};
 		}
 
@@ -25,9 +25,9 @@ namespace Infraestructure.Mapper
 		{
 			return new ArtistDto
 			{
-				id = artist.id,
-				name = artist.name,
-				urlImage = artist.urlImage,
+				Id = artist.Id,
+				Name = artist.Name,
+				UrlImage = artist.UrlImage,
 			};
 		}
 	}

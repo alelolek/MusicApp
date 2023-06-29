@@ -28,36 +28,68 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			pictureBox1 = new PictureBox();
-			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			pbxImageSong = new PictureBox();
+			button1 = new Button();
+			button2 = new Button();
+			button3 = new Button();
+			((System.ComponentModel.ISupportInitialize)pbxImageSong).BeginInit();
 			SuspendLayout();
 			// 
-			// pictureBox1
+			// pbxImageSong
 			// 
-			pictureBox1.BackColor = SystemColors.ActiveCaptionText;
-			pictureBox1.Image = Properties.Resources.nota_musical;
-			pictureBox1.Location = new Point(275, 63);
-			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(195, 190);
-			pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox1.TabIndex = 0;
-			pictureBox1.TabStop = false;
-			pictureBox1.Click += pictureBox1_Click;
+			pbxImageSong.Location = new Point(156, 55);
+			pbxImageSong.Name = "pbxImageSong";
+			pbxImageSong.Size = new Size(241, 207);
+			pbxImageSong.TabIndex = 0;
+			pbxImageSong.TabStop = false;
+			// 
+			// button1
+			// 
+			button1.Image = Properties.Resources.siguiente;
+			button1.Location = new Point(334, 343);
+			button1.Name = "button1";
+			button1.Size = new Size(76, 59);
+			button1.TabIndex = 1;
+			button1.UseVisualStyleBackColor = true;
+			// 
+			// button2
+			// 
+			button2.Location = new Point(236, 345);
+			button2.Name = "button2";
+			button2.Size = new Size(76, 59);
+			button2.TabIndex = 2;
+			button2.UseVisualStyleBackColor = true;
+			// 
+			// button3
+			// 
+			button3.Image = Properties.Resources.atras;
+			button3.Location = new Point(141, 345);
+			button3.Name = "button3";
+			button3.Size = new Size(76, 55);
+			button3.TabIndex = 3;
+			button3.UseVisualStyleBackColor = true;
 			// 
 			// MusicPlayer
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(742, 450);
-			Controls.Add(pictureBox1);
+			ClientSize = new Size(581, 450);
+			Controls.Add(button3);
+			Controls.Add(button2);
+			Controls.Add(button1);
+			Controls.Add(pbxImageSong);
 			Name = "MusicPlayer";
-			Text = "r";
-			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "MusicPlayer";
+			((System.ComponentModel.ISupportInitialize)pbxImageSong).EndInit();
 			ResumeLayout(false);
 		}
 
 		#endregion
 
-		private PictureBox pictureBox1;
+		private PictureBox pbxImageSong;
+		private Button button1;
+		private Button button2;
+		private Button button3;
 	}
 }

@@ -29,22 +29,24 @@
 		private void InitializeComponent()
 		{
 			label1 = new Label();
-			pictureBox1 = new PictureBox();
+			pictureBoxImage = new PictureBox();
 			button1 = new Button();
 			label2 = new Label();
 			textBox1 = new TextBox();
 			dataGridViewAlbums = new DataGridView();
-			textBox2 = new TextBox();
+			txtName = new TextBox();
 			pictureBox2 = new PictureBox();
 			pictureBox3 = new PictureBox();
-			pictureBox4 = new PictureBox();
-			pictureBox5 = new PictureBox();
-			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			btnEdit = new PictureBox();
+			btnDelete = new PictureBox();
+			txtId = new TextBox();
+			txtUrl = new Label();
+			((System.ComponentModel.ISupportInitialize)pictureBoxImage).BeginInit();
 			((System.ComponentModel.ISupportInitialize)dataGridViewAlbums).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+			((System.ComponentModel.ISupportInitialize)btnEdit).BeginInit();
+			((System.ComponentModel.ISupportInitialize)btnDelete).BeginInit();
 			SuspendLayout();
 			// 
 			// label1
@@ -58,14 +60,14 @@
 			label1.TabIndex = 3;
 			label1.Text = "ALBUMS";
 			// 
-			// pictureBox1
+			// pictureBoxImage
 			// 
-			pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox1.Location = new Point(62, 95);
-			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(216, 182);
-			pictureBox1.TabIndex = 4;
-			pictureBox1.TabStop = false;
+			pictureBoxImage.BorderStyle = BorderStyle.FixedSingle;
+			pictureBoxImage.Location = new Point(62, 95);
+			pictureBoxImage.Name = "pictureBoxImage";
+			pictureBoxImage.Size = new Size(216, 182);
+			pictureBoxImage.TabIndex = 4;
+			pictureBoxImage.TabStop = false;
 			// 
 			// button1
 			// 
@@ -75,6 +77,7 @@
 			button1.TabIndex = 5;
 			button1.Text = "upload Image";
 			button1.UseVisualStyleBackColor = true;
+			button1.Click += UploadImage_Click;
 			// 
 			// label2
 			// 
@@ -85,35 +88,35 @@
 			label2.Size = new Size(84, 17);
 			label2.TabIndex = 6;
 			label2.Text = "Album Name";
-			label2.Click += label2_Click;
 			// 
 			// textBox1
 			// 
+			textBox1.BorderStyle = BorderStyle.FixedSingle;
 			textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
 			textBox1.Location = new Point(388, 258);
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(256, 33);
 			textBox1.TabIndex = 7;
-			textBox1.Text = "Buscar";
-			textBox1.TextChanged += textBox1_TextChanged;
 			// 
 			// dataGridViewAlbums
 			// 
+			dataGridViewAlbums.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 			dataGridViewAlbums.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			dataGridViewAlbums.Location = new Point(62, 331);
 			dataGridViewAlbums.Name = "dataGridViewAlbums";
 			dataGridViewAlbums.RowTemplate.Height = 25;
-			dataGridViewAlbums.Size = new Size(582, 169);
+			dataGridViewAlbums.Size = new Size(582, 238);
 			dataGridViewAlbums.TabIndex = 8;
+			dataGridViewAlbums.SelectionChanged += dataGridViewAlbums_SelectionChanged;
 			// 
-			// textBox2
+			// txtName
 			// 
-			textBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			textBox2.Location = new Point(388, 115);
-			textBox2.Name = "textBox2";
-			textBox2.Size = new Size(256, 33);
-			textBox2.TabIndex = 9;
-			textBox2.TextChanged += textBox2_TextChanged;
+			txtName.BorderStyle = BorderStyle.FixedSingle;
+			txtName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtName.Location = new Point(388, 115);
+			txtName.Name = "txtName";
+			txtName.Size = new Size(256, 33);
+			txtName.TabIndex = 9;
 			// 
 			// pictureBox2
 			// 
@@ -125,7 +128,6 @@
 			pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
 			pictureBox2.TabIndex = 10;
 			pictureBox2.TabStop = false;
-			pictureBox2.Click += pictureBox2_Click;
 			// 
 			// pictureBox3
 			// 
@@ -137,54 +139,77 @@
 			pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
 			pictureBox3.TabIndex = 11;
 			pictureBox3.TabStop = false;
+			pictureBox3.Click += Save_Click;
 			// 
-			// pictureBox4
+			// btnEdit
 			// 
-			pictureBox4.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox4.Image = Properties.Resources.editar;
-			pictureBox4.Location = new Point(485, 182);
-			pictureBox4.Name = "pictureBox4";
-			pictureBox4.Size = new Size(67, 50);
-			pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox4.TabIndex = 12;
-			pictureBox4.TabStop = false;
+			btnEdit.BorderStyle = BorderStyle.FixedSingle;
+			btnEdit.Image = Properties.Resources.editar;
+			btnEdit.Location = new Point(485, 182);
+			btnEdit.Name = "btnEdit";
+			btnEdit.Size = new Size(67, 50);
+			btnEdit.SizeMode = PictureBoxSizeMode.CenterImage;
+			btnEdit.TabIndex = 12;
+			btnEdit.TabStop = false;
+			btnEdit.Click += btnEdit_Click;
 			// 
-			// pictureBox5
+			// btnDelete
 			// 
-			pictureBox5.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox5.Image = Properties.Resources.borrar;
-			pictureBox5.Location = new Point(577, 182);
-			pictureBox5.Name = "pictureBox5";
-			pictureBox5.Size = new Size(67, 50);
-			pictureBox5.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox5.TabIndex = 13;
-			pictureBox5.TabStop = false;
+			btnDelete.BorderStyle = BorderStyle.FixedSingle;
+			btnDelete.Image = Properties.Resources.borrar;
+			btnDelete.Location = new Point(577, 182);
+			btnDelete.Name = "btnDelete";
+			btnDelete.Size = new Size(67, 50);
+			btnDelete.SizeMode = PictureBoxSizeMode.CenterImage;
+			btnDelete.TabIndex = 13;
+			btnDelete.TabStop = false;
+			btnDelete.Click += btnDelete_Click;
+			// 
+			// txtId
+			// 
+			txtId.BorderStyle = BorderStyle.None;
+			txtId.ForeColor = Color.White;
+			txtId.Location = new Point(560, 60);
+			txtId.Name = "txtId";
+			txtId.Size = new Size(100, 16);
+			txtId.TabIndex = 14;
+			// 
+			// txtUrl
+			// 
+			txtUrl.AutoSize = true;
+			txtUrl.ForeColor = Color.White;
+			txtUrl.Location = new Point(440, 52);
+			txtUrl.Name = "txtUrl";
+			txtUrl.Size = new Size(0, 15);
+			txtUrl.TabIndex = 15;
 			// 
 			// AlbumAdmin
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
-			Controls.Add(pictureBox5);
-			Controls.Add(pictureBox4);
+			Controls.Add(txtUrl);
+			Controls.Add(txtId);
+			Controls.Add(btnDelete);
+			Controls.Add(btnEdit);
 			Controls.Add(pictureBox3);
 			Controls.Add(pictureBox2);
-			Controls.Add(textBox2);
+			Controls.Add(txtName);
 			Controls.Add(dataGridViewAlbums);
 			Controls.Add(textBox1);
 			Controls.Add(label2);
 			Controls.Add(button1);
-			Controls.Add(pictureBox1);
+			Controls.Add(pictureBoxImage);
 			Controls.Add(label1);
 			Name = "AlbumAdmin";
 			Size = new Size(705, 650);
 			Load += AlbumAdmin_Load;
-			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBoxImage).EndInit();
 			((System.ComponentModel.ISupportInitialize)dataGridViewAlbums).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+			((System.ComponentModel.ISupportInitialize)btnEdit).EndInit();
+			((System.ComponentModel.ISupportInitialize)btnDelete).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -192,15 +217,17 @@
 		#endregion
 
 		private Label label1;
-		private PictureBox pictureBox1;
+		private PictureBox pictureBoxImage;
 		private Button button1;
 		private Label label2;
 		private TextBox textBox1;
-		private TextBox textBox2;
+		private TextBox txtName;
 		private PictureBox pictureBox2;
 		private PictureBox pictureBox3;
-		private PictureBox pictureBox4;
-		private PictureBox pictureBox5;
+		private PictureBox btnEdit;
+		private PictureBox btnDelete;
 		public DataGridView dataGridViewAlbums;
+		private TextBox txtId;
+		private Label txtUrl;
 	}
 }

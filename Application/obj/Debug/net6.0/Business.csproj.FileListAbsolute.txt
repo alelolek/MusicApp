@@ -15,3 +15,5 @@ C:\Users\Usuario\source\repos\MusicApp\Application\obj\Debug\net6.0\Business.dll
 C:\Users\Usuario\source\repos\MusicApp\Application\obj\Debug\net6.0\refint\Business.dll
 C:\Users\Usuario\source\repos\MusicApp\Application\obj\Debug\net6.0\Business.pdb
 C:\Users\Usuario\source\repos\MusicApp\Application\obj\Debug\net6.0\ref\Business.dll
+C:\Users\Usuario\source\repos\MusicApp\Application\bin\Debug\net6.0\Service.dll
+C:\Users\Usuario\source\repos\MusicApp\Application\bin\Debug\net6.0\Service.pdb

@@ -1,11 +1,11 @@
 ﻿
-
 namespace CrossCuting.DTO
 {
 	public class AlbumDto
 	{
-        public int id { get; set; }
-        public string name { get; set; }
-        public string urlImage { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string UrlImage { get; set; }
+        public byte[] Photo { get; set; }
     }
 }

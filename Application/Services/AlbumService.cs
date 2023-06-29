@@ -1,67 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.Security.Policy;
+using Business.Interface;
 using CrossCuting.DTO;
 using CrossCuting.DTO.Standar;
+using Infraestructure.Entities;
 using Infraestructure.Interface;
 using Infraestructure.Repositories;
+using Service.Images;
+using Service.Interfaces;
 
 namespace Business.Services
 {
-	public class AlbumService
+	public class AlbumService : IAlbumService
 	{
 		private readonly IRepository<AlbumDto> albumRepository;
+		private readonly IImageService imageService;
 
 		public AlbumService()
 		{
 			albumRepository = new AlbumRepository();
+			imageService = new ImageService();
 		}
 
 		public ResponseDto CreateAlbum(AlbumDto albumDto)
 		{
-			var response = new ResponseDto();
-			try
-			{
-				response = albumRepository.Save(albumDto);
-			}
-			catch (Exception ex)
-			{
-
-				response.Errors.Add(string.Empty, ex.Message.Substring(0, Math.Min(ex.Message.Length, 250)));
-			}
+			var url = imageService.GuardarComoJpg(albumDto.Photo,albumDto);
+			albumDto.UrlImage = url;
+			var response = albumRepository.Save(albumDto);
 			return response;
 		}
 
 		public ResponseDto EditAlbum(AlbumDto albumDto)
 		{
-			var response = new ResponseDto();
-			try
-			{
-				response = albumRepository.Update(albumDto);
-			}
-			catch (Exception ex)
-			{
-
-				response.Errors.Add(string.Empty, ex.Message.Substring(0, Math.Min(ex.Message.Length, 250)));
-			}
+			var response = albumRepository.Update(albumDto);
 			return response;
 		}
 
-		public ResponseDto DeleteAlbum(AlbumDto albumDto)
+		public ResponseDto DeleteAlbum(int albumId)
 		{
-			var response = new ResponseDto();
-			try
-			{
-				response = albumRepository.Delete(albumDto.id);
-			}
-			catch (Exception ex)
-			{
-
-				response.Errors.Add(string.Empty, ex.Message.Substring(0, Math.Min(ex.Message.Length, 250)));
-			}
+			var response = albumRepository.Delete(albumId);
 			return response;
 		}
+
+		public AlbumDto? GetAlbumById(int id)
+		{
+			Func<AlbumDto, bool>? filter = x => x.Id == id;
+			var album = albumRepository.Get(filter).FirstOrDefault();
+			var albumnes = albumRepository.Get();
+			return album;
+		}
+
+		public List<AlbumDto> GetAllAlbums()
+		{
+			List<AlbumDto> albums;
+			try
+			{
+
+				 albums = albumRepository.Get();
+                foreach (var item in albums)
+                {
+					string url = item.UrlImage;
+					var otroByte = imageService.ConvertirJpgABytes(url);
+					item.Photo = otroByte;
+                }
+            }
+			catch 
+			{
+				throw;
+			}
+			return albums;
+		}
+		
 	}
 }

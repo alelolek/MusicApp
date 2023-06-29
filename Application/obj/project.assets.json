@@ -304,6 +304,21 @@
         "runtime": {
           "bin/placeholder/Infraestructure.dll": {}
         }
+      },
+      "Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "CrossCuting": "1.0.0",
+          "System.Data.SqlClient": "4.8.5",
+          "System.Drawing.Common": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.dll": {}
+        }
       }
     }
   },
@@ -812,11 +827,17 @@
       "type": "project",
       "path": "../Infraestructure/Infraestructure.csproj",
       "msbuildProject": "../Infraestructure/Infraestructure.csproj"
+    },
+    "Service/1.0.0": {
+      "type": "project",
+      "path": "../Service/Service.csproj",
+      "msbuildProject": "../Service/Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Infraestructure >= 1.0.0",
+      "Service >= 1.0.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
   },
@@ -849,6 +870,9 @@
           "projectReferences": {
             "C:\\Users\\Usuario\\source\\repos\\MusicApp\\Infraestructure\\Infraestructure.csproj": {
               "projectPath": "C:\\Users\\Usuario\\source\\repos\\MusicApp\\Infraestructure\\Infraestructure.csproj"
+            },
+            "C:\\Users\\Usuario\\source\\repos\\MusicApp\\Service\\Service.csproj": {
+              "projectPath": "C:\\Users\\Usuario\\source\\repos\\MusicApp\\Service\\Service.csproj"
             }
           }
         }

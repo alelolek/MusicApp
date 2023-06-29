@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 using CrossCuting.DTO;
 using CrossCuting.DTO.Standar;
 using Infraestructure.DataBase;
@@ -32,9 +27,9 @@ namespace Infraestructure.Repositories
 				while (reader.Read())
 				{
 					Artist artist = new Artist();
-					artist.id = reader.GetInt32(0);
-					artist.name = reader.GetString(1);
-					artist.urlImage = reader.GetString(2);
+					artist.Id = reader.GetInt32(0);
+					artist.Name = reader.GetString(1);
+					artist.UrlImage = reader.GetString(2);
 					var artistDto = mapper.MapEntityToDto(artist);
 					artistsDto.Add(artistDto);
 				}
@@ -65,7 +60,7 @@ namespace Infraestructure.Repositories
 			return response;
 		}
 
-		public List<ArtistDto> GetAll()
+		public List<ArtistDto> Get(Func<ArtistDto, bool>? filter = null)
 		{
 			List<ArtistDto> artistsDto = new List<ArtistDto>();
 
@@ -81,6 +76,10 @@ namespace Infraestructure.Repositories
 			{
 				throw;
 			}
+
+			if (filter != null)
+				artistsDto = artistsDto.Where(filter).ToList();
+
 			return artistsDto;			
 		}
 
@@ -93,8 +92,8 @@ namespace Infraestructure.Repositories
 				var query = "INSERT INTO Artists(name,urlImage) VALUES(@name,@urlImage)";
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
-					command.Parameters.AddWithValue("@name", artist.name);
-					command.Parameters.AddWithValue("@urlImage", artist.urlImage);
+					command.Parameters.AddWithValue("@name", artist.Name);
+					command.Parameters.AddWithValue("@urlImage", artist.UrlImage);
 					connection.Open();
 					command.ExecuteNonQuery();
 					connection.Close();
@@ -116,8 +115,8 @@ namespace Infraestructure.Repositories
 				var query = "UPDATE Artist SET name = @name,urlImage = @urlImage WHERE id = @id";
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
-					command.Parameters.AddWithValue("@name", artist.name);
-					command.Parameters.AddWithValue("@urlImage", artist.urlImage);
+					command.Parameters.AddWithValue("@name", artist.Name);
+					command.Parameters.AddWithValue("@urlImage", artist.UrlImage);
 					connection.Open();
 					command.ExecuteNonQuery();
 					connection.Close();

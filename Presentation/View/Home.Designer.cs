@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			label12 = new Label();
+			label1 = new Label();
 			SuspendLayout();
 			// 
 			// label12
@@ -42,11 +43,23 @@
 			label12.TabIndex = 4;
 			label12.Text = "HOME";
 			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+			label1.ForeColor = Color.Indigo;
+			label1.Location = new Point(162, 165);
+			label1.Name = "label1";
+			label1.Size = new Size(364, 45);
+			label1.TabIndex = 5;
+			label1.Text = "BIENVENIDO USUARIO";
+			// 
 			// Home
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
+			Controls.Add(label1);
 			Controls.Add(label12);
 			Name = "Home";
 			Size = new Size(705, 650);
@@ -57,5 +70,6 @@
 		#endregion
 
 		private Label label12;
+		private Label label1;
 	}
 }

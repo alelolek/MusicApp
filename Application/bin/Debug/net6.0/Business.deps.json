@@ -9,6 +9,7 @@
       "Business/1.0.0": {
         "dependencies": {
           "Infraestructure": "1.0.0",
+          "Service": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
@@ -200,6 +201,16 @@
         "runtime": {
           "Infraestructure.dll": {}
         }
+      },
+      "Service/1.0.0": {
+        "dependencies": {
+          "CrossCuting": "1.0.0",
+          "System.Data.SqlClient": "4.8.5",
+          "System.Drawing.Common": "7.0.0"
+        },
+        "runtime": {
+          "Service.dll": {}
+        }
       }
     }
   },
@@ -320,6 +331,11 @@
       "sha512": ""
     },
     "Infraestructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

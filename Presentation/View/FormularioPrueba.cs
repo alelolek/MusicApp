@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Infraestructure.Entities;
 using Infraestructure.Repositories;
+using Presentation.Controller;
 
 namespace Presentation.View
 {
@@ -63,6 +64,8 @@ namespace Presentation.View
 			//	// Agregar una fila al DataGridView con los datos de la cuenta
 			//	dataGridView1.Rows.Add(account.id, account.userName, account.email, account.rol);
 			//}
+			LoginController ac = new LoginController();
+			ac.Mostrar();
 		}
 
 		private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)

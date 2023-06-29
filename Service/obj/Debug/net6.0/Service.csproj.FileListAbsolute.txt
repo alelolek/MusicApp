@@ -10,3 +10,6 @@ C:\Users\Usuario\source\repos\MusicApp\Service\obj\Debug\net6.0\Service.dll
 C:\Users\Usuario\source\repos\MusicApp\Service\obj\Debug\net6.0\refint\Service.dll
 C:\Users\Usuario\source\repos\MusicApp\Service\obj\Debug\net6.0\Service.pdb
 C:\Users\Usuario\source\repos\MusicApp\Service\obj\Debug\net6.0\ref\Service.dll
+C:\Users\Usuario\source\repos\MusicApp\Service\bin\Debug\net6.0\CrossCuting.dll
+C:\Users\Usuario\source\repos\MusicApp\Service\bin\Debug\net6.0\CrossCuting.pdb
+C:\Users\Usuario\source\repos\MusicApp\Service\obj\Debug\net6.0\Service.csproj.CopyComplete

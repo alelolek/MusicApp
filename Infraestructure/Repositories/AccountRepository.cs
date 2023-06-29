@@ -1,8 +1,4 @@
-﻿
-using System.Data;
-using System.Data.SqlClient;
-using System.Security.Cryptography;
-using System.Text;
+﻿using System.Data.SqlClient;
 using CrossCuting.DTO;
 using CrossCuting.DTO.Standar;
 using Infraestructure.DataBase;
@@ -44,7 +40,7 @@ namespace Infraestructure.Repositories
         }
 
 
-        public List<AccountDto> GetAll()
+        public List<AccountDto> Get(Func<AccountDto, bool>? filter = null)
         {
             List<AccountDto> accountsDto = new List<AccountDto>();
 
@@ -60,6 +56,9 @@ namespace Infraestructure.Repositories
             {
                 throw;
             }
+			if (filter != null)
+				accountsDto = accountsDto.Where(filter).ToList();
+			
             return accountsDto;
         }
 
@@ -118,12 +117,12 @@ namespace Infraestructure.Repositories
 			var account = mapper.MapDtoToEntity(accountDto);
 			try
             {
-                var query = "UPDATE Account SET username = @username,email = @email, password = @password, rol = @rol WHERE id = @id";
+                var query = "UPDATE Account SET username = @username,email = @email, rol = @rol WHERE id = @id";
                 using(SqlCommand command = new SqlCommand(query,connection))
                 {
                     command.Parameters.AddWithValue("@id", account.id);
                     command.Parameters.AddWithValue("@username", account.username);
-                    command.Parameters.AddWithValue("@password", account.password);
+					command.Parameters.AddWithValue("@email", account.email);
                     command.Parameters.AddWithValue("@rol", account.rol);
                     connection.Open();
                     command.ExecuteNonQuery();

@@ -31,8 +31,8 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArtistUser));
 			label1 = new Label();
 			textBox1 = new TextBox();
-			panel1 = new Panel();
 			pictureBox1 = new PictureBox();
+			flowLayoutPanel1 = new FlowLayoutPanel();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			SuspendLayout();
 			// 
@@ -55,15 +55,7 @@
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(253, 33);
 			textBox1.TabIndex = 1;
-			textBox1.Text = "Buscar";
 			textBox1.TextChanged += textBox1_TextChanged;
-			// 
-			// panel1
-			// 
-			panel1.Location = new Point(69, 209);
-			panel1.Name = "panel1";
-			panel1.Size = new Size(118, 100);
-			panel1.TabIndex = 2;
 			// 
 			// pictureBox1
 			// 
@@ -77,17 +69,25 @@
 			pictureBox1.TabStop = false;
 			pictureBox1.Click += pictureBox1_Click;
 			// 
+			// flowLayoutPanel1
+			// 
+			flowLayoutPanel1.Location = new Point(37, 225);
+			flowLayoutPanel1.Name = "flowLayoutPanel1";
+			flowLayoutPanel1.Size = new Size(644, 367);
+			flowLayoutPanel1.TabIndex = 4;
+			// 
 			// ArtistUser
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
+			Controls.Add(flowLayoutPanel1);
 			Controls.Add(pictureBox1);
-			Controls.Add(panel1);
 			Controls.Add(textBox1);
 			Controls.Add(label1);
 			Name = "ArtistUser";
 			Size = new Size(705, 650);
+			Load += ArtistUser_Load;
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
@@ -97,7 +97,7 @@
 
 		private Label label1;
 		private TextBox textBox1;
-		private Panel panel1;
 		private PictureBox pictureBox1;
+		private FlowLayoutPanel flowLayoutPanel1;
 	}
 }

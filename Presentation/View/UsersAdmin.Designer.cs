@@ -42,6 +42,8 @@
 			pictureBox2 = new PictureBox();
 			pictureBox3 = new PictureBox();
 			pictureBox4 = new PictureBox();
+			txtId = new TextBox();
+			txtPassword = new TextBox();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -62,36 +64,39 @@
 			// 
 			// txtUsername
 			// 
-			txtUsername.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			txtUsername.Location = new Point(61, 123);
+			txtUsername.BorderStyle = BorderStyle.FixedSingle;
+			txtUsername.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtUsername.Location = new Point(61, 132);
 			txtUsername.Name = "txtUsername";
-			txtUsername.Size = new Size(216, 33);
+			txtUsername.Size = new Size(216, 27);
 			txtUsername.TabIndex = 4;
 			// 
 			// txtEmail
 			// 
-			txtEmail.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			txtEmail.Location = new Point(61, 181);
+			txtEmail.BorderStyle = BorderStyle.FixedSingle;
+			txtEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtEmail.Location = new Point(61, 204);
 			txtEmail.Name = "txtEmail";
-			txtEmail.Size = new Size(216, 33);
+			txtEmail.Size = new Size(216, 27);
 			txtEmail.TabIndex = 5;
 			// 
 			// cbxRole
 			// 
-			cbxRole.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			cbxRole.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
 			cbxRole.FormattingEnabled = true;
-			cbxRole.Location = new Point(61, 243);
+			cbxRole.Location = new Point(61, 269);
 			cbxRole.Name = "cbxRole";
-			cbxRole.Size = new Size(216, 33);
+			cbxRole.Size = new Size(216, 28);
 			cbxRole.TabIndex = 6;
 			// 
 			// textBox3
 			// 
-			textBox3.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			textBox3.BorderStyle = BorderStyle.FixedSingle;
+			textBox3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
 			textBox3.ForeColor = SystemColors.AppWorkspace;
-			textBox3.Location = new Point(386, 243);
+			textBox3.Location = new Point(386, 269);
 			textBox3.Name = "textBox3";
-			textBox3.Size = new Size(255, 33);
+			textBox3.Size = new Size(255, 27);
 			textBox3.TabIndex = 7;
 			textBox3.Text = "Search";
 			// 
@@ -99,28 +104,29 @@
 			// 
 			pictureBox1.BorderStyle = BorderStyle.FixedSingle;
 			pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-			pictureBox1.Location = new Point(597, 243);
+			pictureBox1.Location = new Point(603, 269);
 			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(44, 33);
+			pictureBox1.Size = new Size(38, 28);
 			pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
 			pictureBox1.TabIndex = 8;
 			pictureBox1.TabStop = false;
 			// 
 			// dataGridViewUsers
 			// 
-			dataGridViewUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewUsers.Location = new Point(61, 296);
+			dataGridViewUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewUsers.BackgroundColor = Color.Snow;
+			dataGridViewUsers.Location = new Point(61, 317);
 			dataGridViewUsers.Name = "dataGridViewUsers";
 			dataGridViewUsers.RowTemplate.Height = 25;
-			dataGridViewUsers.Size = new Size(580, 205);
+			dataGridViewUsers.Size = new Size(580, 280);
 			dataGridViewUsers.TabIndex = 9;
-			dataGridViewUsers.CellClick += dataGridView1_CellClick;
+			dataGridViewUsers.SelectionChanged += dataGridViewUsers_SelectionChanged;
 			// 
 			// label2
 			// 
 			label2.AutoSize = true;
 			label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-			label2.Location = new Point(71, 113);
+			label2.Location = new Point(61, 103);
 			label2.Name = "label2";
 			label2.Size = new Size(69, 17);
 			label2.TabIndex = 10;
@@ -130,7 +136,7 @@
 			// 
 			label3.AutoSize = true;
 			label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-			label3.Location = new Point(71, 172);
+			label3.Location = new Point(61, 173);
 			label3.Name = "label3";
 			label3.Size = new Size(42, 17);
 			label3.TabIndex = 11;
@@ -140,7 +146,7 @@
 			// 
 			label4.AutoSize = true;
 			label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-			label4.Location = new Point(71, 233);
+			label4.Location = new Point(61, 243);
 			label4.Name = "label4";
 			label4.Size = new Size(35, 17);
 			label4.TabIndex = 12;
@@ -150,7 +156,7 @@
 			// 
 			pictureBox2.BorderStyle = BorderStyle.FixedSingle;
 			pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-			pictureBox2.Location = new Point(386, 164);
+			pictureBox2.Location = new Point(386, 190);
 			pictureBox2.Name = "pictureBox2";
 			pictureBox2.Size = new Size(54, 50);
 			pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -162,28 +168,51 @@
 			// 
 			pictureBox3.BorderStyle = BorderStyle.FixedSingle;
 			pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-			pictureBox3.Location = new Point(489, 164);
+			pictureBox3.Location = new Point(488, 190);
 			pictureBox3.Name = "pictureBox3";
 			pictureBox3.Size = new Size(54, 50);
 			pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
 			pictureBox3.TabIndex = 14;
 			pictureBox3.TabStop = false;
+			pictureBox3.Click += pictureBox3_Click;
 			// 
 			// pictureBox4
 			// 
+			pictureBox4.BorderStyle = BorderStyle.FixedSingle;
 			pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-			pictureBox4.Location = new Point(587, 164);
+			pictureBox4.Location = new Point(587, 190);
 			pictureBox4.Name = "pictureBox4";
 			pictureBox4.Size = new Size(54, 50);
 			pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
 			pictureBox4.TabIndex = 15;
 			pictureBox4.TabStop = false;
+			pictureBox4.Click += pictureBox4_Click;
+			// 
+			// txtId
+			// 
+			txtId.BorderStyle = BorderStyle.None;
+			txtId.ForeColor = Color.White;
+			txtId.Location = new Point(425, 122);
+			txtId.Name = "txtId";
+			txtId.Size = new Size(100, 16);
+			txtId.TabIndex = 16;
+			// 
+			// txtPassword
+			// 
+			txtPassword.BorderStyle = BorderStyle.None;
+			txtPassword.ForeColor = Color.White;
+			txtPassword.Location = new Point(433, 148);
+			txtPassword.Name = "txtPassword";
+			txtPassword.Size = new Size(100, 16);
+			txtPassword.TabIndex = 17;
 			// 
 			// UsersAdmin
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
+			Controls.Add(txtPassword);
+			Controls.Add(txtId);
 			Controls.Add(pictureBox4);
 			Controls.Add(pictureBox3);
 			Controls.Add(pictureBox2);
@@ -199,6 +228,7 @@
 			Controls.Add(label1);
 			Name = "UsersAdmin";
 			Size = new Size(705, 650);
+			Load += UsersAdmin_Load;
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			((System.ComponentModel.ISupportInitialize)dataGridViewUsers).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -223,5 +253,7 @@
 		private PictureBox pictureBox3;
 		private PictureBox pictureBox4;
 		public DataGridView dataGridViewUsers;
+		private TextBox txtId;
+		private TextBox txtPassword;
 	}
 }
