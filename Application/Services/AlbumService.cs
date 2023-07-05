@@ -14,7 +14,7 @@ namespace Business.Services
 	public class AlbumService : IAlbumService
 	{
 		private readonly IRepository<AlbumDto> albumRepository;
-		private readonly IImageService imageService;
+		private readonly IImageService<AlbumDto> imageService;
 
 		public AlbumService()
 		{
@@ -32,22 +32,40 @@ namespace Business.Services
 
 		public ResponseDto EditAlbum(AlbumDto albumDto)
 		{
+			var url = imageService.ActualizarFoto(albumDto.Photo, albumDto);
+			albumDto.UrlImage = url;
 			var response = albumRepository.Update(albumDto);
 			return response;
 		}
 
 		public ResponseDto DeleteAlbum(int albumId)
 		{
+			var objeto  = GetAlbumById(albumId);
+			var url = objeto.UrlImage;
+			imageService.EliminarImagenPorUrl(url);
 			var response = albumRepository.Delete(albumId);
+
 			return response;
 		}
-
-		public AlbumDto? GetAlbumById(int id)
+	
+		public AlbumDto GetAlbumById(int id)
 		{
-			Func<AlbumDto, bool>? filter = x => x.Id == id;
-			var album = albumRepository.Get(filter).FirstOrDefault();
-			var albumnes = albumRepository.Get();
-			return album;
+			try
+			{
+				List<AlbumDto> albums = albumRepository.Get();
+				AlbumDto album = albums.FirstOrDefault(a => a.Id == id);
+				if (album != null)
+				{
+					string url = album.UrlImage;
+					byte[] otroByte = imageService.ConvertirJpgABytes(url);
+					album.Photo = otroByte;
+				}
+				return album;
+			}
+			catch
+			{
+				throw;
+			}
 		}
 
 		public List<AlbumDto> GetAllAlbums()
@@ -55,8 +73,7 @@ namespace Business.Services
 			List<AlbumDto> albums;
 			try
 			{
-
-				 albums = albumRepository.Get();
+				albums = albumRepository.Get();
                 foreach (var item in albums)
                 {
 					string url = item.UrlImage;
@@ -73,3 +90,19 @@ namespace Business.Services
 		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+//public AlbumDto? GetAlbumById(int id)
+//{
+//	Func<AlbumDto, bool>? filter = x => x.Id == id;
+//	var album = albumRepository.Get(filter).FirstOrDefault();
+//	return album;
+//}

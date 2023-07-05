@@ -33,19 +33,20 @@
 			btnSave = new PictureBox();
 			btnDelete = new PictureBox();
 			btnEdit = new PictureBox();
-			textBox1 = new TextBox();
+			txtBuscar = new TextBox();
 			txtName = new TextBox();
 			label2 = new Label();
-			pictureBox4 = new PictureBox();
+			btnbuscar = new PictureBox();
 			dataGridViewArtists = new DataGridView();
-			panel1 = new Panel();
 			btnUploadImage = new Button();
 			txtId = new TextBox();
+			pictureBoxImage = new PictureBox();
 			((System.ComponentModel.ISupportInitialize)btnSave).BeginInit();
 			((System.ComponentModel.ISupportInitialize)btnDelete).BeginInit();
 			((System.ComponentModel.ISupportInitialize)btnEdit).BeginInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+			((System.ComponentModel.ISupportInitialize)btnbuscar).BeginInit();
 			((System.ComponentModel.ISupportInitialize)dataGridViewArtists).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pictureBoxImage).BeginInit();
 			SuspendLayout();
 			// 
 			// label1
@@ -95,15 +96,15 @@
 			btnEdit.TabStop = false;
 			btnEdit.Click += btnEdit_Click;
 			// 
-			// textBox1
+			// txtBuscar
 			// 
-			textBox1.BorderStyle = BorderStyle.FixedSingle;
-			textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			textBox1.ForeColor = SystemColors.AppWorkspace;
-			textBox1.Location = new Point(393, 286);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(258, 33);
-			textBox1.TabIndex = 8;
+			txtBuscar.BorderStyle = BorderStyle.FixedSingle;
+			txtBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtBuscar.ForeColor = Color.Black;
+			txtBuscar.Location = new Point(393, 286);
+			txtBuscar.Name = "txtBuscar";
+			txtBuscar.Size = new Size(258, 33);
+			txtBuscar.TabIndex = 8;
 			// 
 			// txtName
 			// 
@@ -124,20 +125,22 @@
 			label2.TabIndex = 10;
 			label2.Text = "Artist Name";
 			// 
-			// pictureBox4
+			// btnbuscar
 			// 
-			pictureBox4.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-			pictureBox4.Location = new Point(612, 286);
-			pictureBox4.Name = "pictureBox4";
-			pictureBox4.Size = new Size(39, 33);
-			pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox4.TabIndex = 11;
-			pictureBox4.TabStop = false;
+			btnbuscar.BorderStyle = BorderStyle.FixedSingle;
+			btnbuscar.Image = (Image)resources.GetObject("btnbuscar.Image");
+			btnbuscar.Location = new Point(612, 286);
+			btnbuscar.Name = "btnbuscar";
+			btnbuscar.Size = new Size(39, 33);
+			btnbuscar.SizeMode = PictureBoxSizeMode.CenterImage;
+			btnbuscar.TabIndex = 11;
+			btnbuscar.TabStop = false;
+			btnbuscar.Click += btnbuscar_Click;
 			// 
 			// dataGridViewArtists
 			// 
 			dataGridViewArtists.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewArtists.BackgroundColor = Color.White;
 			dataGridViewArtists.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			dataGridViewArtists.Location = new Point(55, 346);
 			dataGridViewArtists.Name = "dataGridViewArtists";
@@ -145,14 +148,6 @@
 			dataGridViewArtists.Size = new Size(596, 220);
 			dataGridViewArtists.TabIndex = 12;
 			dataGridViewArtists.SelectionChanged += dataGridViewArtists_SelectionChanged;
-			// 
-			// panel1
-			// 
-			panel1.BorderStyle = BorderStyle.FixedSingle;
-			panel1.Location = new Point(83, 102);
-			panel1.Name = "panel1";
-			panel1.Size = new Size(200, 178);
-			panel1.TabIndex = 13;
 			// 
 			// btnUploadImage
 			// 
@@ -173,19 +168,28 @@
 			txtId.Size = new Size(100, 16);
 			txtId.TabIndex = 15;
 			// 
+			// pictureBoxImage
+			// 
+			pictureBoxImage.BorderStyle = BorderStyle.FixedSingle;
+			pictureBoxImage.Location = new Point(72, 90);
+			pictureBoxImage.Name = "pictureBoxImage";
+			pictureBoxImage.Size = new Size(211, 185);
+			pictureBoxImage.TabIndex = 16;
+			pictureBoxImage.TabStop = false;
+			// 
 			// ArtistAdmin
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
+			Controls.Add(pictureBoxImage);
 			Controls.Add(txtId);
 			Controls.Add(btnUploadImage);
-			Controls.Add(panel1);
 			Controls.Add(dataGridViewArtists);
-			Controls.Add(pictureBox4);
+			Controls.Add(btnbuscar);
 			Controls.Add(label2);
 			Controls.Add(txtName);
-			Controls.Add(textBox1);
+			Controls.Add(txtBuscar);
 			Controls.Add(btnEdit);
 			Controls.Add(btnDelete);
 			Controls.Add(btnSave);
@@ -196,8 +200,9 @@
 			((System.ComponentModel.ISupportInitialize)btnSave).EndInit();
 			((System.ComponentModel.ISupportInitialize)btnDelete).EndInit();
 			((System.ComponentModel.ISupportInitialize)btnEdit).EndInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+			((System.ComponentModel.ISupportInitialize)btnbuscar).EndInit();
 			((System.ComponentModel.ISupportInitialize)dataGridViewArtists).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBoxImage).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -208,13 +213,13 @@
 		private PictureBox btnSave;
 		private PictureBox btnDelete;
 		private PictureBox btnEdit;
-		private TextBox textBox1;
+		private TextBox txtBuscar;
 		private TextBox txtName;
 		private Label label2;
-		private PictureBox pictureBox4;
+		private PictureBox btnbuscar;
 		private DataGridView dataGridViewArtists;
-		private Panel panel1;
 		private Button btnUploadImage;
 		private TextBox txtId;
+		private PictureBox pictureBoxImage;
 	}
 }

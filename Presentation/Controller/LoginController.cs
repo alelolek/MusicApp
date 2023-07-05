@@ -17,8 +17,6 @@ namespace Presentation.Controller
 			_albumService = new AlbumService();
 			_vista = new Login();
 			_vista.ShowDialog();
-			_vista.button1.Click += Formulario_ButtonClick;
-			Controls.Add(_vista.button1);
 		}
         public void Mostrar()
 		{

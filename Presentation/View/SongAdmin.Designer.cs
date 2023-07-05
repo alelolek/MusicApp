@@ -77,14 +77,14 @@
 			// 
 			// dgvSongs
 			// 
-			dgvSongs.BackgroundColor = SystemColors.ActiveBorder;
+			dgvSongs.BackgroundColor = Color.White;
 			dgvSongs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			dgvSongs.Location = new Point(61, 192);
 			dgvSongs.Name = "dgvSongs";
 			dgvSongs.RowTemplate.Height = 25;
 			dgvSongs.Size = new Size(587, 300);
 			dgvSongs.TabIndex = 5;
-			dgvSongs.CellContentClick += dataGridView1_CellContentClick;
+			dgvSongs.SelectionChanged += dgvSongs_SelectionChanged;
 			// 
 			// pictureBox2
 			// 
@@ -134,6 +134,7 @@
 			Controls.Add(label1);
 			Name = "SongAdmin";
 			Size = new Size(705, 650);
+			Load += SongAdmin_Load;
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			((System.ComponentModel.ISupportInitialize)dgvSongs).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

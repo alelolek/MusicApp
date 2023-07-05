@@ -151,5 +151,33 @@ namespace Presentation.View
 			LimpiarCampos();
 			RecargarGrid();
 		}
+
+		private void btnBuscar_Click(object sender, EventArgs e)
+		{
+			string nombreCategoria = txtBuscar.Text;
+
+			var categorias = categoryService.GetAllCategory();
+			var categoriaEncontrado = categorias.FirstOrDefault(a => a.Name.Contains(nombreCategoria));
+
+			if (categoriaEncontrado != null)
+			{
+				dataGridViewCategory.Rows.Clear();
+				dataGridViewCategory.Rows.Add(categoriaEncontrado.Id, categoriaEncontrado.Name);
+				Ejecutar();
+			}
+			else
+			{
+				MessageBox.Show("No se encontró ningún artista con ese nombre.");
+				dataGridViewCategory.Rows.Clear();
+				RecargarGrid();
+				txtBuscar.Clear();
+			}
+
+		}
+		private async void Ejecutar()
+		{
+			await Task.Delay(2000);
+			RecargarGrid();
+		}
 	}
 }

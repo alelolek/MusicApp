@@ -16,12 +16,17 @@ namespace Presentation.View
 
 		private void AlbumUser_Load(object sender, EventArgs e)
 		{
-			var listaCanciones = albumService.GetAllAlbums(); 
+			CargarAlbum();
+		}
+
+		private void CargarAlbum()
+		{
+			var listaCanciones = albumService.GetAllAlbums();
 
 			foreach (var cancion in listaCanciones)
 			{
-				Panel panel = CrearPanelCancion(cancion); 
-				flowLayoutPanel1.Controls.Add(panel); 
+				Panel panel = CrearPanelCancion(cancion);
+				flowLayoutPanel1.Controls.Add(panel);
 			}
 		}
 
@@ -29,15 +34,16 @@ namespace Presentation.View
 		{
 			MusicPlayer hu = new MusicPlayer();
 			hu.ShowDialog();
+			flowLayoutPanel1.Controls.Clear();
+			CargarAlbum();
 		}
 
 		private Panel CrearPanelCancion(AlbumDto cancion)
 		{
 			Panel panel = new Panel();
-			panel.BackColor = Color.Beige;
-			panel.BorderStyle = BorderStyle.FixedSingle;
+			panel.BackColor = Color.White;
 			panel.Padding = new Padding(10);
-			panel.Size = new Size(200, 150);
+			panel.Size = new Size(200, 200);
 
 			Label lblNombre = new Label();
 			lblNombre.Text = cancion.Name;
@@ -47,20 +53,23 @@ namespace Presentation.View
 
 			PictureBox pictureBox = new PictureBox();
 			pictureBox.Dock = DockStyle.Top;
+			pictureBox.Size = new Size(200, 150);
 			pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
 			pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
 
 
-			string nombreAlbum = cancion.Name; 
-			Image imagenAlbum = ConvertirBytesAImagen(cancion.Photo); 
+			string nombreAlbum = cancion.Name;
+			Image imagenAlbum = ConvertirBytesAImagen(cancion.Photo);
 			pictureBox.Image = imagenAlbum;
 
 			lblNombre.Click += (sender, e) =>
 			{
 				AbrirNuevaPestaña(cancion);
+				flowLayoutPanel1.Controls.Clear();
+				CargarAlbum();
 			};
 
-			panel.Controls.Add(pictureBox); 
+			panel.Controls.Add(pictureBox);
 			panel.Controls.Add(lblNombre);
 
 			return panel;
@@ -77,8 +86,25 @@ namespace Presentation.View
 
 		private void pictureBox1_Click(object sender, EventArgs e)
 		{
+			string nombreAlbum = txtBuscar.Text;
 
+			var albums = albumService.GetAllAlbums();
+			var albumEncontrado = albums.FirstOrDefault(album => album.Name.Contains(nombreAlbum));
+
+			if (albumEncontrado != null)
+			{
+				flowLayoutPanel1.Controls.Clear();
+				Panel panel = CrearPanelCancion(albumEncontrado);
+				flowLayoutPanel1.Controls.Add(panel);
+				txtBuscar.Clear();
+				//flowLayoutPanel1.Controls.Clear();
+
+			}
+			else
+			{
+				MessageBox.Show("No se encontró ningún álbum con ese nombre.");
+			}
 		}
-		//falta metodo buscar
+
 	}
 }

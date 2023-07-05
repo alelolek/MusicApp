@@ -15,6 +15,11 @@ namespace Presentation.View
 
 		private void label4_Click(object sender, EventArgs e)
 		{
+			OpenLogin();
+		}
+
+		private void OpenLogin()
+		{
 			Login login = new Login();
 			login.Show();
 			this.Hide();
@@ -40,7 +45,8 @@ namespace Presentation.View
 					};
 
 					var response = accountService.CreateAccount(account);
-					MessageBox.Show("Registro Exitoso");
+					MessageBox.Show("Registro Exitoso,\nInicia Sesion...");
+					OpenLogin();
 				}
 				else
 					MessageBox.Show("Campos Incompletos");

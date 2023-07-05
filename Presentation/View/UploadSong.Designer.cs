@@ -29,19 +29,20 @@
 		private void InitializeComponent()
 		{
 			button2 = new Button();
-			button1 = new Button();
-			pictureBox1 = new PictureBox();
-			comboBox3 = new ComboBox();
-			comboBox2 = new ComboBox();
+			pictureBoxImage = new PictureBox();
+			cbxCategories = new ComboBox();
+			cbxAlbum = new ComboBox();
 			category = new Label();
 			Album = new Label();
-			comboBox1 = new ComboBox();
+			cbxArtist = new ComboBox();
 			artist = new Label();
 			name = new Label();
 			textBox1 = new TextBox();
 			label1 = new Label();
 			pictureBox2 = new PictureBox();
-			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			button1 = new Button();
+			panel1 = new Panel();
+			((System.ComponentModel.ISupportInitialize)pictureBoxImage).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			SuspendLayout();
 			// 
@@ -58,46 +59,33 @@
 			button2.Text = "Save Song";
 			button2.UseVisualStyleBackColor = false;
 			// 
-			// button1
+			// pictureBoxImage
 			// 
-			button1.BackColor = Color.FromArgb(17, 0, 100);
-			button1.FlatAppearance.BorderSize = 0;
-			button1.FlatStyle = FlatStyle.Popup;
-			button1.Font = new Font("Arial Black", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-			button1.ForeColor = Color.White;
-			button1.Location = new Point(139, 352);
-			button1.Name = "button1";
-			button1.Size = new Size(143, 40);
-			button1.TabIndex = 25;
-			button1.Text = "Upload Image";
-			button1.UseVisualStyleBackColor = false;
+			pictureBoxImage.BorderStyle = BorderStyle.FixedSingle;
+			pictureBoxImage.Location = new Point(76, 110);
+			pictureBoxImage.Name = "pictureBoxImage";
+			pictureBoxImage.Size = new Size(268, 227);
+			pictureBoxImage.TabIndex = 24;
+			pictureBoxImage.TabStop = false;
 			// 
-			// pictureBox1
+			// cbxCategories
 			// 
-			pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox1.Location = new Point(76, 110);
-			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(268, 227);
-			pictureBox1.TabIndex = 24;
-			pictureBox1.TabStop = false;
+			cbxCategories.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			cbxCategories.FormattingEnabled = true;
+			cbxCategories.Location = new Point(386, 386);
+			cbxCategories.Name = "cbxCategories";
+			cbxCategories.Size = new Size(246, 33);
+			cbxCategories.TabIndex = 23;
 			// 
-			// comboBox3
+			// cbxAlbum
 			// 
-			comboBox3.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			comboBox3.FormattingEnabled = true;
-			comboBox3.Location = new Point(386, 386);
-			comboBox3.Name = "comboBox3";
-			comboBox3.Size = new Size(246, 33);
-			comboBox3.TabIndex = 23;
-			// 
-			// comboBox2
-			// 
-			comboBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			comboBox2.FormattingEnabled = true;
-			comboBox2.Location = new Point(386, 300);
-			comboBox2.Name = "comboBox2";
-			comboBox2.Size = new Size(246, 33);
-			comboBox2.TabIndex = 22;
+			cbxAlbum.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			cbxAlbum.FormattingEnabled = true;
+			cbxAlbum.Location = new Point(386, 300);
+			cbxAlbum.Name = "cbxAlbum";
+			cbxAlbum.Size = new Size(246, 33);
+			cbxAlbum.TabIndex = 22;
+			cbxAlbum.SelectedIndexChanged += cbxAlbum_SelectedIndexChanged;
 			// 
 			// category
 			// 
@@ -120,14 +108,14 @@
 			Album.Text = "Album";
 			Album.Click += label4_Click;
 			// 
-			// comboBox1
+			// cbxArtist
 			// 
-			comboBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			comboBox1.FormattingEnabled = true;
-			comboBox1.Location = new Point(386, 219);
-			comboBox1.Name = "comboBox1";
-			comboBox1.Size = new Size(246, 33);
-			comboBox1.TabIndex = 19;
+			cbxArtist.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			cbxArtist.FormattingEnabled = true;
+			cbxArtist.Location = new Point(386, 219);
+			cbxArtist.Name = "cbxArtist";
+			cbxArtist.Size = new Size(246, 33);
+			cbxArtist.TabIndex = 19;
 			// 
 			// artist
 			// 
@@ -143,7 +131,7 @@
 			// 
 			name.AutoSize = true;
 			name.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-			name.Location = new Point(386, 110);
+			name.Location = new Point(386, 100);
 			name.Name = "name";
 			name.Size = new Size(116, 25);
 			name.TabIndex = 17;
@@ -152,7 +140,7 @@
 			// textBox1
 			// 
 			textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			textBox1.ForeColor = SystemColors.AppWorkspace;
+			textBox1.ForeColor = Color.Black;
 			textBox1.Location = new Point(386, 138);
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(246, 33);
@@ -177,21 +165,47 @@
 			pictureBox2.Size = new Size(35, 32);
 			pictureBox2.TabIndex = 27;
 			pictureBox2.TabStop = false;
+			pictureBox2.Click += pictureBox2_Click;
+			// 
+			// button1
+			// 
+			button1.BackColor = Color.FromArgb(17, 0, 100);
+			button1.FlatAppearance.BorderSize = 0;
+			button1.FlatStyle = FlatStyle.Popup;
+			button1.Font = new Font("Arial Black", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+			button1.ForeColor = Color.White;
+			button1.Location = new Point(201, 367);
+			button1.Name = "button1";
+			button1.Size = new Size(143, 40);
+			button1.TabIndex = 25;
+			button1.Text = "Upload Song";
+			button1.UseVisualStyleBackColor = false;
+			button1.Click += button1_Click;
+			// 
+			// panel1
+			// 
+			panel1.Location = new Point(76, 367);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(51, 40);
+			panel1.TabIndex = 28;
+			panel1.Click += panel1_Click;
+			panel1.Paint += panel1_Paint;
 			// 
 			// UploadSong
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(734, 561);
+			Controls.Add(panel1);
 			Controls.Add(pictureBox2);
 			Controls.Add(button2);
 			Controls.Add(button1);
-			Controls.Add(pictureBox1);
-			Controls.Add(comboBox3);
-			Controls.Add(comboBox2);
+			Controls.Add(pictureBoxImage);
+			Controls.Add(cbxCategories);
+			Controls.Add(cbxAlbum);
 			Controls.Add(category);
 			Controls.Add(Album);
-			Controls.Add(comboBox1);
+			Controls.Add(cbxArtist);
 			Controls.Add(artist);
 			Controls.Add(name);
 			Controls.Add(textBox1);
@@ -200,7 +214,7 @@
 			Name = "UploadSong";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "UploadSong";
-			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBoxImage).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
@@ -209,17 +223,18 @@
 		#endregion
 
 		private Button button2;
-		private Button button1;
-		private PictureBox pictureBox1;
-		private ComboBox comboBox3;
-		private ComboBox comboBox2;
+		private PictureBox pictureBoxImage;
+		private ComboBox cbxCategories;
+		private ComboBox cbxAlbum;
 		private Label category;
 		private Label Album;
-		private ComboBox comboBox1;
+		private ComboBox cbxArtist;
 		private Label artist;
 		private Label name;
 		private TextBox textBox1;
 		private Label label1;
 		private PictureBox pictureBox2;
+		private Button button1;
+		private Panel panel1;
 	}
 }

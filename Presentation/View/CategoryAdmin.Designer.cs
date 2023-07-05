@@ -31,8 +31,8 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryAdmin));
 			label1 = new Label();
 			dataGridViewCategory = new DataGridView();
-			textBox1 = new TextBox();
-			pictureBox1 = new PictureBox();
+			txtBuscar = new TextBox();
+			btnBuscar = new PictureBox();
 			pictureBox2 = new PictureBox();
 			pictureBox3 = new PictureBox();
 			pictureBox4 = new PictureBox();
@@ -40,7 +40,7 @@
 			label2 = new Label();
 			txtId = new TextBox();
 			((System.ComponentModel.ISupportInitialize)dataGridViewCategory).BeginInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			((System.ComponentModel.ISupportInitialize)btnBuscar).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -69,26 +69,27 @@
 			dataGridViewCategory.TabIndex = 5;
 			dataGridViewCategory.SelectionChanged += dataGridViewCategory_SelectionChanged;
 			// 
-			// textBox1
+			// txtBuscar
 			// 
-			textBox1.BorderStyle = BorderStyle.FixedSingle;
-			textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			textBox1.ForeColor = SystemColors.ActiveBorder;
-			textBox1.Location = new Point(395, 220);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(265, 33);
-			textBox1.TabIndex = 6;
+			txtBuscar.BorderStyle = BorderStyle.FixedSingle;
+			txtBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtBuscar.ForeColor = Color.Black;
+			txtBuscar.Location = new Point(395, 220);
+			txtBuscar.Name = "txtBuscar";
+			txtBuscar.Size = new Size(265, 33);
+			txtBuscar.TabIndex = 6;
 			// 
-			// pictureBox1
+			// btnBuscar
 			// 
-			pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-			pictureBox1.Location = new Point(604, 220);
-			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(56, 33);
-			pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox1.TabIndex = 7;
-			pictureBox1.TabStop = false;
+			btnBuscar.BorderStyle = BorderStyle.FixedSingle;
+			btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
+			btnBuscar.Location = new Point(604, 220);
+			btnBuscar.Name = "btnBuscar";
+			btnBuscar.Size = new Size(56, 33);
+			btnBuscar.SizeMode = PictureBoxSizeMode.CenterImage;
+			btnBuscar.TabIndex = 7;
+			btnBuscar.TabStop = false;
+			btnBuscar.Click += btnBuscar_Click;
 			// 
 			// pictureBox2
 			// 
@@ -165,15 +166,15 @@
 			Controls.Add(pictureBox4);
 			Controls.Add(pictureBox3);
 			Controls.Add(pictureBox2);
-			Controls.Add(pictureBox1);
-			Controls.Add(textBox1);
+			Controls.Add(btnBuscar);
+			Controls.Add(txtBuscar);
 			Controls.Add(dataGridViewCategory);
 			Controls.Add(label1);
 			Name = "CategoryAdmin";
 			Size = new Size(705, 650);
 			Load += CategoryAdmin_Load;
 			((System.ComponentModel.ISupportInitialize)dataGridViewCategory).EndInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			((System.ComponentModel.ISupportInitialize)btnBuscar).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
@@ -185,8 +186,8 @@
 
 		private Label label1;
 		private DataGridView dataGridViewCategory;
-		private TextBox textBox1;
-		private PictureBox pictureBox1;
+		private TextBox txtBuscar;
+		private PictureBox btnBuscar;
 		private PictureBox pictureBox2;
 		private PictureBox pictureBox3;
 		private PictureBox pictureBox4;

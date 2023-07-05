@@ -17,6 +17,7 @@ namespace Presentation.View
 		public MusicPlayer()
 		{
 			InitializeComponent();
+
 		}
 
 

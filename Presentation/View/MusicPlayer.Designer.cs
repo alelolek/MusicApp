@@ -32,6 +32,8 @@
 			button1 = new Button();
 			button2 = new Button();
 			button3 = new Button();
+			btnMenosVol = new Button();
+			btnMoreVol = new Button();
 			((System.ComponentModel.ISupportInitialize)pbxImageSong).BeginInit();
 			SuspendLayout();
 			// 
@@ -69,11 +71,31 @@
 			button3.TabIndex = 3;
 			button3.UseVisualStyleBackColor = true;
 			// 
+			// btnMenosVol
+			// 
+			btnMenosVol.Image = Properties.Resources.volumen_apagado;
+			btnMenosVol.Location = new Point(40, 345);
+			btnMenosVol.Name = "btnMenosVol";
+			btnMenosVol.Size = new Size(76, 57);
+			btnMenosVol.TabIndex = 4;
+			btnMenosVol.UseVisualStyleBackColor = true;
+			// 
+			// btnMoreVol
+			// 
+			btnMoreVol.Image = Properties.Resources.volumen;
+			btnMoreVol.Location = new Point(432, 346);
+			btnMoreVol.Name = "btnMoreVol";
+			btnMoreVol.Size = new Size(76, 57);
+			btnMoreVol.TabIndex = 5;
+			btnMoreVol.UseVisualStyleBackColor = true;
+			// 
 			// MusicPlayer
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(581, 450);
+			Controls.Add(btnMoreVol);
+			Controls.Add(btnMenosVol);
 			Controls.Add(button3);
 			Controls.Add(button2);
 			Controls.Add(button1);
@@ -91,5 +113,7 @@
 		private Button button1;
 		private Button button2;
 		private Button button3;
+		private Button btnMenosVol;
+		private Button btnMoreVol;
 	}
 }

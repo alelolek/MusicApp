@@ -17,6 +17,7 @@ namespace Presentation.View
 			accountService = new AccountService();
 			cbxRole.Items.Add("Usuario");
 			cbxRole.Items.Add("Administrador");
+			cbxRole.SelectedIndex = 0;
 		}
 
 
@@ -156,6 +157,7 @@ namespace Presentation.View
 		private void pictureBox4_Click(object sender, EventArgs e)
 		{
 			Delete();
+			LimpiarCampos();
 			RecargarGrid();
 		}
 

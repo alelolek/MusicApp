@@ -4,16 +4,31 @@ using Business.Services;
 using CrossCuting.DTO.Standar;
 using CrossCuting.DTO;
 using Presentation.Validators;
+using Infraestructure.Entities;
+using System.Windows.Forms;
+using System.Linq;
 
 namespace Presentation.View
 {
 	public partial class ArtistAdmin : UserControl
 	{
 		private IArtistService artistService;
+		private byte[] imagenBytes;
 		public ArtistAdmin()
 		{
 			InitializeComponent();
 			artistService = new ArtistService();
+			pictureBoxImage.SizeMode = PictureBoxSizeMode.StretchImage;
+			pictureBoxImage.SizeMode = PictureBoxSizeMode.Zoom;
+		}
+
+		public byte[] ConvertImageToBytes(Image image)
+		{
+			using (MemoryStream ms = new MemoryStream())
+			{
+				image.Save(ms, image.RawFormat);
+				return ms.ToArray();
+			}
 		}
 
 		private void RecargarGrid()
@@ -32,18 +47,22 @@ namespace Presentation.View
 			txtName.Clear();
 		}
 
+
 		public void Edit()
 		{
 			var response = new ResponseDto();
 			try
 			{
+				Image image = pictureBoxImage.Image;
+				var imageByte = ConvertImageToBytes(image);
 				var artist = new ArtistDto
 				{
 					Id = int.Parse(txtId.Text),
 					Name = txtName.Text,
-					//UrlImage
+					Photo = imageByte,
 				};
 				response = artistService.EditArtist(artist);
+				MessageBox.Show("El Artista fue editado");
 			}
 			catch (Exception)
 			{
@@ -60,6 +79,7 @@ namespace Presentation.View
 				}
 			}
 		}
+
 
 		public void Delete()
 		{
@@ -93,7 +113,7 @@ namespace Presentation.View
 			var artist = new ArtistDto()
 			{
 				Name = txtName.Text,
-				//UrlI
+				Photo = imagenBytes
 			};
 
 			var response = artistService.CreateArtist(artist);
@@ -115,7 +135,7 @@ namespace Presentation.View
 		private void ArtistAdmin_Load(object sender, EventArgs e)
 		{
 			dataGridViewArtists.Columns.Add("id", "Id");
-			dataGridViewArtists.Columns.Add("userName", "Nombre");
+			dataGridViewArtists.Columns.Add("name", "Name");
 
 			RecargarGrid();
 		}
@@ -141,9 +161,23 @@ namespace Presentation.View
 			RecargarGrid();
 		}
 
+
+
 		private void btnUploadImage_Click(object sender, EventArgs e)
 		{
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+			openFileDialog.Filter = "Archivos de Imagen|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
 
+			if (openFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				string rutaImagen = openFileDialog.FileName;
+
+				Image imagen = Image.FromFile(rutaImagen);
+				pictureBoxImage.Image = imagen;
+				pictureBoxImage.SizeMode = PictureBoxSizeMode.Zoom;
+
+				imagenBytes = ConvertImageToBytes(imagen);
+			}
 		}
 
 		private void dataGridViewArtists_SelectionChanged(object sender, EventArgs e)
@@ -154,11 +188,49 @@ namespace Presentation.View
 
 				string id = selectedRow.Cells["Id"].Value.ToString();
 				string name = selectedRow.Cells["Name"].Value.ToString();
-				//falta url
 
 				txtName.Text = name;
 				txtId.Text = id;
+
+				var intId = int.Parse(id);
+
+				var objeto = artistService.GetArtistById(intId);
+
+				Image imagenArtist = ConvertirBytesAImagen(objeto.Photo);
+				pictureBoxImage.Image = imagenArtist;
 			}
+		}
+
+		public Image ConvertirBytesAImagen(byte[] imagenBytes)
+		{
+			using (MemoryStream ms = new MemoryStream(imagenBytes))
+			{
+				Image imagen = Image.FromStream(ms);
+				return imagen;
+			}
+		}
+
+		private void btnbuscar_Click(object sender, EventArgs e)
+		{
+			string nombreArtista = txtBuscar.Text;
+
+			var artis = artistService.GetAllArtist();
+			var artistaencontrado = artis.FirstOrDefault(a => a.Name.Contains(nombreArtista));
+
+			if (artistaencontrado != null)
+			{
+				dataGridViewArtists.Rows.Clear();
+				dataGridViewArtists.Rows.Add(artistaencontrado.Id, artistaencontrado.Name);
+
+			}
+			else
+			{
+				MessageBox.Show("No se encontró ningún artista con ese nombre.");
+				dataGridViewArtists.Rows.Clear();
+				RecargarGrid();
+				txtBuscar.Clear();
+			}
+
 		}
 	}
 }

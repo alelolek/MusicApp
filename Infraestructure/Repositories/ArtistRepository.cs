@@ -89,7 +89,7 @@ namespace Infraestructure.Repositories
 			var artist = mapper.MapDtoToEntity(artistsDto);
 			try
 			{
-				var query = "INSERT INTO Artists(name,urlImage) VALUES(@name,@urlImage)";
+				var query = "INSERT INTO Artist(name,urlImage) VALUES(@name,@urlImage)";
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
 					command.Parameters.AddWithValue("@name", artist.Name);

@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CrossCuting.DTO;
+﻿using CrossCuting.DTO;
 
 namespace Service.Interfaces
 {
-	public interface IImageService
+	public interface IImageService<TEntity>
 	{
-		public string GuardarComoJpg(byte[] imagenBytes, AlbumDto name);
+		public string GuardarComoJpg(byte[] imagenBytes, TEntity name);
 		public string ObtenerUrlCompleta(string pathBase, string nombreArchivo);
 		public byte[] ConvertirJpgABytes(string rutaArchivoJpg);
+		public void EliminarImagenPorUrl(string urlImagen);
 
+		public string ActualizarFoto(byte[] nuevaImagenBytes, TEntity name);
 	}
 }

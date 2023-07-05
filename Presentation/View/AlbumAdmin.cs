@@ -1,7 +1,9 @@
-﻿using Business.Interface;
+﻿using System.Windows.Forms;
+using Business.Interface;
 using Business.Services;
 using CrossCuting.DTO;
 using CrossCuting.DTO.Standar;
+using Infraestructure.Entities;
 using Presentation.Validators;
 
 namespace Presentation.View
@@ -14,7 +16,9 @@ namespace Presentation.View
 		{
 			InitializeComponent();
 			albumService = new AlbumService();
-			pictureBoxImage.SizeMode = PictureBoxSizeMode.CenterImage;
+			
+			pictureBoxImage.SizeMode = PictureBoxSizeMode.StretchImage;
+			pictureBoxImage.SizeMode = PictureBoxSizeMode.Zoom;
 		}
 
 		public byte[] ConvertImageToBytes(Image image)
@@ -41,13 +45,16 @@ namespace Presentation.View
 			var response = new ResponseDto();
 			try
 			{
+				Image image = pictureBoxImage.Image;
+				var imageByte = ConvertImageToBytes(image);
 				var album = new AlbumDto
 				{
 					Id = int.Parse(txtId.Text),
 					Name = txtName.Text,
-					//UrlImage
+					Photo = imageByte,
 				};
 				response = albumService.EditAlbum(album);
+				MessageBox.Show("El Artista fue editado");
 			}
 			catch (Exception)
 			{
@@ -69,7 +76,6 @@ namespace Presentation.View
 			var response = new ResponseDto();
 			var albumId = int.Parse(txtId.Text);
 			response = albumService.DeleteAlbum(albumId);
-
 			if (response.Errors.Any())
 			{
 				foreach (var error in response.Errors)
@@ -82,6 +88,8 @@ namespace Presentation.View
 				MessageBox.Show("Eliminado con éxito");
 			}
 		}
+
+
 
 		public void Guardar()
 		{
@@ -119,12 +127,12 @@ namespace Presentation.View
 		private void AlbumAdmin_Load(object sender, EventArgs e)
 		{
 			dataGridViewAlbums.Columns.Add("id", "Id");
-			dataGridViewAlbums.Columns.Add("userName", "Nombre");
+			dataGridViewAlbums.Columns.Add("name", "Name");
 
 			RecargarGrid();
 		}
 
-	
+
 		private void UploadImage_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -142,7 +150,7 @@ namespace Presentation.View
 			}
 		}
 
-			private void Save_Click(object sender, EventArgs e)
+		private void Save_Click(object sender, EventArgs e)
 		{
 			Guardar();
 			LimpiarCampos();
@@ -164,10 +172,23 @@ namespace Presentation.View
 
 				string id = selectedRow.Cells["Id"].Value.ToString();
 				string name = selectedRow.Cells["Name"].Value.ToString();
-				//falta url
-
 				txtName.Text = name;
 				txtId.Text = id;
+				var intId = int.Parse(id);
+
+				var objeto = albumService.GetAlbumById(intId);
+
+				Image imagenAlbum = ConvertirBytesAImagen(objeto.Photo);
+				pictureBoxImage.Image = imagenAlbum;
+			}
+		}
+
+		public Image ConvertirBytesAImagen(byte[] imagenBytes)
+		{
+			using (MemoryStream ms = new MemoryStream(imagenBytes))
+			{
+				Image imagen = Image.FromStream(ms);
+				return imagen;
 			}
 		}
 
@@ -183,6 +204,27 @@ namespace Presentation.View
 			Delete();
 			LimpiarCampos();
 			RecargarGrid();
+		}
+
+		private void Buscar_Click(object sender, EventArgs e)
+		{
+			string nombreAlbum = txtBuscar.Text;
+
+			var albums = albumService.GetAllAlbums();
+			var albumEncontrado = albums.FirstOrDefault(album => album.Name.Contains(nombreAlbum));
+
+			if (albumEncontrado != null)
+			{
+				
+				dataGridViewAlbums.Rows.Clear();
+				dataGridViewAlbums.Rows.Add(albumEncontrado.Id, albumEncontrado.Name);
+			}
+			else
+			{
+				MessageBox.Show("No se encontró ningún álbum con ese nombre.");
+				dataGridViewAlbums.Rows.Clear();
+				RecargarGrid();
+			}
 		}
 	}
 }

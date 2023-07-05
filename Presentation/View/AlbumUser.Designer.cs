@@ -30,10 +30,10 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlbumUser));
 			label1 = new Label();
-			textBox1 = new TextBox();
-			pictureBox1 = new PictureBox();
+			txtBuscar = new TextBox();
+			btnBuscar = new PictureBox();
 			flowLayoutPanel1 = new FlowLayoutPanel();
-			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			((System.ComponentModel.ISupportInitialize)btnBuscar).BeginInit();
 			SuspendLayout();
 			// 
 			// label1
@@ -47,31 +47,35 @@
 			label1.TabIndex = 2;
 			label1.Text = "ALBUMS";
 			// 
-			// textBox1
+			// txtBuscar
 			// 
-			textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			textBox1.Location = new Point(394, 124);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(261, 33);
-			textBox1.TabIndex = 3;
+			txtBuscar.BackColor = Color.White;
+			txtBuscar.BorderStyle = BorderStyle.FixedSingle;
+			txtBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtBuscar.ForeColor = Color.FromArgb(128, 128, 255);
+			txtBuscar.Location = new Point(394, 124);
+			txtBuscar.Name = "txtBuscar";
+			txtBuscar.Size = new Size(261, 33);
+			txtBuscar.TabIndex = 3;
 			// 
-			// pictureBox1
+			// btnBuscar
 			// 
-			pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-			pictureBox1.Location = new Point(620, 124);
-			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(35, 33);
-			pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox1.TabIndex = 4;
-			pictureBox1.TabStop = false;
-			pictureBox1.Click += pictureBox1_Click;
+			btnBuscar.BackColor = Color.White;
+			btnBuscar.BorderStyle = BorderStyle.FixedSingle;
+			btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
+			btnBuscar.Location = new Point(620, 124);
+			btnBuscar.Name = "btnBuscar";
+			btnBuscar.Size = new Size(35, 33);
+			btnBuscar.SizeMode = PictureBoxSizeMode.CenterImage;
+			btnBuscar.TabIndex = 4;
+			btnBuscar.TabStop = false;
+			btnBuscar.Click += pictureBox1_Click;
 			// 
 			// flowLayoutPanel1
 			// 
-			flowLayoutPanel1.Location = new Point(47, 236);
+			flowLayoutPanel1.Location = new Point(34, 186);
 			flowLayoutPanel1.Name = "flowLayoutPanel1";
-			flowLayoutPanel1.Size = new Size(637, 389);
+			flowLayoutPanel1.Size = new Size(637, 422);
 			flowLayoutPanel1.TabIndex = 6;
 			// 
 			// AlbumUser
@@ -80,13 +84,13 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
 			Controls.Add(flowLayoutPanel1);
-			Controls.Add(pictureBox1);
-			Controls.Add(textBox1);
+			Controls.Add(btnBuscar);
+			Controls.Add(txtBuscar);
 			Controls.Add(label1);
 			Name = "AlbumUser";
 			Size = new Size(705, 650);
 			Load += AlbumUser_Load;
-			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			((System.ComponentModel.ISupportInitialize)btnBuscar).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -94,8 +98,8 @@
 		#endregion
 
 		private Label label1;
-		private TextBox textBox1;
-		private PictureBox pictureBox1;
+		private TextBox txtBuscar;
+		private PictureBox btnBuscar;
 		private FlowLayoutPanel flowLayoutPanel1;
 	}
 }

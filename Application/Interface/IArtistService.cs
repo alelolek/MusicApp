@@ -16,6 +16,8 @@ namespace Business.Interface
 		public ResponseDto EditArtist(ArtistDto artistDto);
 
 		public ResponseDto DeleteArtist(int artistId);
+
+		public ArtistDto GetArtistById(int id);
 		public List<ArtistDto> GetAllArtist();
 	}
 }

@@ -1,4 +1,4 @@
-using Presentation.Controller;
+
 using Presentation.View;
 
 namespace Presentation
@@ -14,7 +14,7 @@ namespace Presentation
 			// To customize application configuration such as set high DPI settings or default font,
 			// see https://aka.ms/applicationconfiguration.
 			//ApplicationConfiguration.Initialize();
-			Application.Run(new HomeAdmin());
+			Application.Run(new Login());
 			//var controller = new LoginController();
 		}
 	}

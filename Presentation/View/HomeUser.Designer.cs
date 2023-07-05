@@ -29,13 +29,17 @@
 		private void InitializeComponent()
 		{
 			panelContainer = new Panel();
+			panel5 = new Panel();
+			label5 = new Label();
+			pictureBox3 = new PictureBox();
+			panel4 = new Panel();
+			label6 = new Label();
+			pictureBox4 = new PictureBox();
 			pictureBox1 = new PictureBox();
 			label1 = new Label();
 			label2 = new Label();
 			label3 = new Label();
 			label4 = new Label();
-			label5 = new Label();
-			label6 = new Label();
 			label7 = new Label();
 			label8 = new Label();
 			label9 = new Label();
@@ -43,36 +47,96 @@
 			label11 = new Label();
 			backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			pictureBox2 = new PictureBox();
-			pictureBox3 = new PictureBox();
-			pictureBox4 = new PictureBox();
 			pictureBox5 = new PictureBox();
 			pictureBox6 = new PictureBox();
 			pictureBox7 = new PictureBox();
 			panel1 = new Panel();
 			panel2 = new Panel();
 			panel3 = new Panel();
-			panel4 = new Panel();
-			panelContainer.SuspendLayout();
+			panel6 = new Panel();
+			panel5.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+			panel4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
 			panel1.SuspendLayout();
 			panel2.SuspendLayout();
 			panel3.SuspendLayout();
+			panel6.SuspendLayout();
 			SuspendLayout();
 			// 
 			// panelContainer
 			// 
 			panelContainer.BackColor = Color.White;
-			panelContainer.Controls.Add(panel4);
 			panelContainer.Location = new Point(231, 0);
 			panelContainer.Name = "panelContainer";
 			panelContainer.Size = new Size(705, 650);
 			panelContainer.TabIndex = 0;
+			// 
+			// panel5
+			// 
+			panel5.Controls.Add(label5);
+			panel5.Controls.Add(pictureBox3);
+			panel5.Location = new Point(1, 194);
+			panel5.Name = "panel5";
+			panel5.Size = new Size(224, 49);
+			panel5.TabIndex = 0;
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			label5.ForeColor = Color.White;
+			label5.Location = new Point(43, 14);
+			label5.Name = "label5";
+			label5.Size = new Size(75, 25);
+			label5.TabIndex = 6;
+			label5.Text = "Albums";
+			label5.Click += label5_Click;
+			// 
+			// pictureBox3
+			// 
+			pictureBox3.Image = Properties.Resources.album_de_musica;
+			pictureBox3.Location = new Point(8, 15);
+			pictureBox3.Name = "pictureBox3";
+			pictureBox3.Size = new Size(29, 24);
+			pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
+			pictureBox3.TabIndex = 14;
+			pictureBox3.TabStop = false;
+			// 
+			// panel4
+			// 
+			panel4.Controls.Add(label6);
+			panel4.Controls.Add(pictureBox4);
+			panel4.Location = new Point(1, 239);
+			panel4.Name = "panel4";
+			panel4.Size = new Size(224, 49);
+			panel4.TabIndex = 0;
+			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			label6.ForeColor = Color.Transparent;
+			label6.Location = new Point(46, 11);
+			label6.Name = "label6";
+			label6.Size = new Size(63, 25);
+			label6.TabIndex = 7;
+			label6.Text = "Songs";
+			label6.Click += label6_Click;
+			// 
+			// pictureBox4
+			// 
+			pictureBox4.Image = Properties.Resources.nota_musical;
+			pictureBox4.Location = new Point(10, 11);
+			pictureBox4.Name = "pictureBox4";
+			pictureBox4.Size = new Size(27, 24);
+			pictureBox4.TabIndex = 15;
+			pictureBox4.TabStop = false;
 			// 
 			// pictureBox1
 			// 
@@ -110,7 +174,7 @@
 			label3.AutoSize = true;
 			label3.Font = new Font("Arial", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
 			label3.ForeColor = Color.White;
-			label3.Location = new Point(22, 144);
+			label3.Location = new Point(16, 129);
 			label3.Name = "label3";
 			label3.Size = new Size(53, 14);
 			label3.TabIndex = 4;
@@ -121,43 +185,19 @@
 			label4.AutoSize = true;
 			label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
 			label4.ForeColor = Color.Transparent;
-			label4.Location = new Point(45, 174);
+			label4.Location = new Point(43, 16);
 			label4.Name = "label4";
 			label4.Size = new Size(64, 25);
 			label4.TabIndex = 5;
 			label4.Text = "Artists";
 			label4.Click += label4_Click;
 			// 
-			// label5
-			// 
-			label5.AutoSize = true;
-			label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			label5.ForeColor = Color.White;
-			label5.Location = new Point(45, 208);
-			label5.Name = "label5";
-			label5.Size = new Size(75, 25);
-			label5.TabIndex = 6;
-			label5.Text = "Albums";
-			label5.Click += label5_Click;
-			// 
-			// label6
-			// 
-			label6.AutoSize = true;
-			label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			label6.ForeColor = Color.Transparent;
-			label6.Location = new Point(46, 242);
-			label6.Name = "label6";
-			label6.Size = new Size(63, 25);
-			label6.TabIndex = 7;
-			label6.Text = "Songs";
-			label6.Click += label6_Click;
-			// 
 			// label7
 			// 
 			label7.AutoSize = true;
 			label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
 			label7.ForeColor = Color.Transparent;
-			label7.Location = new Point(50, 13);
+			label7.Location = new Point(46, 0);
 			label7.Name = "label7";
 			label7.Size = new Size(102, 25);
 			label7.TabIndex = 8;
@@ -214,36 +254,17 @@
 			// pictureBox2
 			// 
 			pictureBox2.Image = Properties.Resources.artista__2_;
-			pictureBox2.Location = new Point(12, 175);
+			pictureBox2.Location = new Point(8, 17);
 			pictureBox2.Name = "pictureBox2";
 			pictureBox2.Size = new Size(29, 24);
 			pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
 			pictureBox2.TabIndex = 13;
 			pictureBox2.TabStop = false;
 			// 
-			// pictureBox3
-			// 
-			pictureBox3.Image = Properties.Resources.album_de_musica;
-			pictureBox3.Location = new Point(12, 208);
-			pictureBox3.Name = "pictureBox3";
-			pictureBox3.Size = new Size(29, 24);
-			pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox3.TabIndex = 14;
-			pictureBox3.TabStop = false;
-			// 
-			// pictureBox4
-			// 
-			pictureBox4.Image = Properties.Resources.nota_musical;
-			pictureBox4.Location = new Point(12, 242);
-			pictureBox4.Name = "pictureBox4";
-			pictureBox4.Size = new Size(27, 24);
-			pictureBox4.TabIndex = 15;
-			pictureBox4.TabStop = false;
-			// 
 			// pictureBox5
 			// 
 			pictureBox5.Image = Properties.Resources.menu;
-			pictureBox5.Location = new Point(10, 13);
+			pictureBox5.Location = new Point(10, 1);
 			pictureBox5.Name = "pictureBox5";
 			pictureBox5.Size = new Size(27, 24);
 			pictureBox5.TabIndex = 16;
@@ -283,24 +304,26 @@
 			panel2.Controls.Add(label9);
 			panel2.Location = new Point(1, 412);
 			panel2.Name = "panel2";
-			panel2.Size = new Size(221, 49);
+			panel2.Size = new Size(224, 49);
 			panel2.TabIndex = 20;
 			// 
 			// panel3
 			// 
 			panel3.Controls.Add(pictureBox5);
 			panel3.Controls.Add(label7);
-			panel3.Location = new Point(1, 303);
+			panel3.Location = new Point(1, 294);
 			panel3.Name = "panel3";
-			panel3.Size = new Size(224, 49);
+			panel3.Size = new Size(224, 39);
 			panel3.TabIndex = 0;
 			// 
-			// panel4
+			// panel6
 			// 
-			panel4.Location = new Point(31, 303);
-			panel4.Name = "panel4";
-			panel4.Size = new Size(200, 49);
-			panel4.TabIndex = 0;
+			panel6.Controls.Add(label4);
+			panel6.Controls.Add(pictureBox2);
+			panel6.Location = new Point(1, 147);
+			panel6.Name = "panel6";
+			panel6.Size = new Size(224, 49);
+			panel6.TabIndex = 21;
 			// 
 			// HomeUser
 			// 
@@ -308,17 +331,14 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(17, 0, 118);
 			ClientSize = new Size(934, 611);
+			Controls.Add(panel6);
+			Controls.Add(panel5);
+			Controls.Add(panel4);
 			Controls.Add(panel3);
 			Controls.Add(panel2);
 			Controls.Add(panel1);
-			Controls.Add(pictureBox4);
-			Controls.Add(pictureBox3);
-			Controls.Add(pictureBox2);
 			Controls.Add(label11);
 			Controls.Add(label8);
-			Controls.Add(label6);
-			Controls.Add(label5);
-			Controls.Add(label4);
 			Controls.Add(label3);
 			Controls.Add(label2);
 			Controls.Add(label1);
@@ -328,11 +348,14 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "HomeUser";
 			Load += HomeUser_Load;
-			panelContainer.ResumeLayout(false);
+			panel5.ResumeLayout(false);
+			panel5.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+			panel4.ResumeLayout(false);
+			panel4.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
@@ -342,6 +365,8 @@
 			panel2.PerformLayout();
 			panel3.ResumeLayout(false);
 			panel3.PerformLayout();
+			panel6.ResumeLayout(false);
+			panel6.PerformLayout();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -372,5 +397,7 @@
 		private Panel panel2;
 		private Panel panel3;
 		private Panel panel4;
+		private Panel panel5;
+		private Panel panel6;
 	}
 }

@@ -32,10 +32,10 @@
 			pictureBoxImage = new PictureBox();
 			button1 = new Button();
 			label2 = new Label();
-			textBox1 = new TextBox();
+			txtBuscar = new TextBox();
 			dataGridViewAlbums = new DataGridView();
 			txtName = new TextBox();
-			pictureBox2 = new PictureBox();
+			Buscar = new PictureBox();
 			pictureBox3 = new PictureBox();
 			btnEdit = new PictureBox();
 			btnDelete = new PictureBox();
@@ -43,7 +43,7 @@
 			txtUrl = new Label();
 			((System.ComponentModel.ISupportInitialize)pictureBoxImage).BeginInit();
 			((System.ComponentModel.ISupportInitialize)dataGridViewAlbums).BeginInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+			((System.ComponentModel.ISupportInitialize)Buscar).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
 			((System.ComponentModel.ISupportInitialize)btnEdit).BeginInit();
 			((System.ComponentModel.ISupportInitialize)btnDelete).BeginInit();
@@ -89,14 +89,14 @@
 			label2.TabIndex = 6;
 			label2.Text = "Album Name";
 			// 
-			// textBox1
+			// txtBuscar
 			// 
-			textBox1.BorderStyle = BorderStyle.FixedSingle;
-			textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			textBox1.Location = new Point(388, 258);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(256, 33);
-			textBox1.TabIndex = 7;
+			txtBuscar.BorderStyle = BorderStyle.FixedSingle;
+			txtBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtBuscar.Location = new Point(388, 258);
+			txtBuscar.Name = "txtBuscar";
+			txtBuscar.Size = new Size(256, 33);
+			txtBuscar.TabIndex = 7;
 			// 
 			// dataGridViewAlbums
 			// 
@@ -118,16 +118,17 @@
 			txtName.Size = new Size(256, 33);
 			txtName.TabIndex = 9;
 			// 
-			// pictureBox2
+			// Buscar
 			// 
-			pictureBox2.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox2.Image = Properties.Resources.busqueda__1_;
-			pictureBox2.Location = new Point(597, 258);
-			pictureBox2.Name = "pictureBox2";
-			pictureBox2.Size = new Size(47, 33);
-			pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox2.TabIndex = 10;
-			pictureBox2.TabStop = false;
+			Buscar.BorderStyle = BorderStyle.FixedSingle;
+			Buscar.Image = Properties.Resources.busqueda__1_;
+			Buscar.Location = new Point(597, 258);
+			Buscar.Name = "Buscar";
+			Buscar.Size = new Size(47, 33);
+			Buscar.SizeMode = PictureBoxSizeMode.CenterImage;
+			Buscar.TabIndex = 10;
+			Buscar.TabStop = false;
+			Buscar.Click += Buscar_Click;
 			// 
 			// pictureBox3
 			// 
@@ -193,10 +194,10 @@
 			Controls.Add(btnDelete);
 			Controls.Add(btnEdit);
 			Controls.Add(pictureBox3);
-			Controls.Add(pictureBox2);
+			Controls.Add(Buscar);
 			Controls.Add(txtName);
 			Controls.Add(dataGridViewAlbums);
-			Controls.Add(textBox1);
+			Controls.Add(txtBuscar);
 			Controls.Add(label2);
 			Controls.Add(button1);
 			Controls.Add(pictureBoxImage);
@@ -206,7 +207,7 @@
 			Load += AlbumAdmin_Load;
 			((System.ComponentModel.ISupportInitialize)pictureBoxImage).EndInit();
 			((System.ComponentModel.ISupportInitialize)dataGridViewAlbums).EndInit();
-			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+			((System.ComponentModel.ISupportInitialize)Buscar).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
 			((System.ComponentModel.ISupportInitialize)btnEdit).EndInit();
 			((System.ComponentModel.ISupportInitialize)btnDelete).EndInit();
@@ -220,9 +221,9 @@
 		private PictureBox pictureBoxImage;
 		private Button button1;
 		private Label label2;
-		private TextBox textBox1;
+		private TextBox txtBuscar;
 		private TextBox txtName;
-		private PictureBox pictureBox2;
+		private PictureBox Buscar;
 		private PictureBox pictureBox3;
 		private PictureBox btnEdit;
 		private PictureBox btnDelete;

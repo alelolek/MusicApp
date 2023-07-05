@@ -30,10 +30,10 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArtistUser));
 			label1 = new Label();
-			textBox1 = new TextBox();
-			pictureBox1 = new PictureBox();
+			txtBuscar = new TextBox();
+			btnBuscar = new PictureBox();
 			flowLayoutPanel1 = new FlowLayoutPanel();
-			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			((System.ComponentModel.ISupportInitialize)btnBuscar).BeginInit();
 			SuspendLayout();
 			// 
 			// label1
@@ -47,31 +47,33 @@
 			label1.TabIndex = 0;
 			label1.Text = "ARTIST";
 			// 
-			// textBox1
+			// txtBuscar
 			// 
-			textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			textBox1.ForeColor = SystemColors.AppWorkspace;
-			textBox1.Location = new Point(399, 119);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(253, 33);
-			textBox1.TabIndex = 1;
-			textBox1.TextChanged += textBox1_TextChanged;
+			txtBuscar.BackColor = Color.White;
+			txtBuscar.BorderStyle = BorderStyle.FixedSingle;
+			txtBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtBuscar.ForeColor = Color.White;
+			txtBuscar.Location = new Point(399, 119);
+			txtBuscar.Name = "txtBuscar";
+			txtBuscar.Size = new Size(253, 33);
+			txtBuscar.TabIndex = 1;
+			txtBuscar.TextChanged += textBox1_TextChanged;
 			// 
-			// pictureBox1
+			// btnBuscar
 			// 
-			pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-			pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-			pictureBox1.Location = new Point(613, 119);
-			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new Size(39, 33);
-			pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox1.TabIndex = 3;
-			pictureBox1.TabStop = false;
-			pictureBox1.Click += pictureBox1_Click;
+			btnBuscar.BorderStyle = BorderStyle.FixedSingle;
+			btnBuscar.Image = (Image)resources.GetObject("btnBuscar.Image");
+			btnBuscar.Location = new Point(613, 119);
+			btnBuscar.Name = "btnBuscar";
+			btnBuscar.Size = new Size(39, 33);
+			btnBuscar.SizeMode = PictureBoxSizeMode.CenterImage;
+			btnBuscar.TabIndex = 3;
+			btnBuscar.TabStop = false;
+			btnBuscar.Click += pictureBox1_Click;
 			// 
 			// flowLayoutPanel1
 			// 
-			flowLayoutPanel1.Location = new Point(37, 225);
+			flowLayoutPanel1.Location = new Point(26, 174);
 			flowLayoutPanel1.Name = "flowLayoutPanel1";
 			flowLayoutPanel1.Size = new Size(644, 367);
 			flowLayoutPanel1.TabIndex = 4;
@@ -82,13 +84,13 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
 			Controls.Add(flowLayoutPanel1);
-			Controls.Add(pictureBox1);
-			Controls.Add(textBox1);
+			Controls.Add(btnBuscar);
+			Controls.Add(txtBuscar);
 			Controls.Add(label1);
 			Name = "ArtistUser";
 			Size = new Size(705, 650);
 			Load += ArtistUser_Load;
-			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			((System.ComponentModel.ISupportInitialize)btnBuscar).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -96,8 +98,8 @@
 		#endregion
 
 		private Label label1;
-		private TextBox textBox1;
-		private PictureBox pictureBox1;
+		private TextBox txtBuscar;
+		private PictureBox btnBuscar;
 		private FlowLayoutPanel flowLayoutPanel1;
 	}
 }

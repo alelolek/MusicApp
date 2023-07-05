@@ -61,3 +61,10 @@ C:\Users\Usuario\source\repos\MusicApp\Presentation\obj\Debug\net6.0-windows\Pre
 C:\Users\Usuario\source\repos\MusicApp\Presentation\obj\Debug\net6.0-windows\Presentation.View.MusicPlayer.resources
 C:\Users\Usuario\source\repos\MusicApp\Presentation\bin\Debug\net6.0-windows\Service.dll
 C:\Users\Usuario\source\repos\MusicApp\Presentation\bin\Debug\net6.0-windows\Service.pdb
+C:\Users\Usuario\source\repos\MusicApp\Presentation\bin\Debug\net6.0-windows\NAudio.dll
+C:\Users\Usuario\source\repos\MusicApp\Presentation\bin\Debug\net6.0-windows\NAudio.Asio.dll
+C:\Users\Usuario\source\repos\MusicApp\Presentation\bin\Debug\net6.0-windows\NAudio.Core.dll
+C:\Users\Usuario\source\repos\MusicApp\Presentation\bin\Debug\net6.0-windows\NAudio.Midi.dll
+C:\Users\Usuario\source\repos\MusicApp\Presentation\bin\Debug\net6.0-windows\NAudio.Wasapi.dll
+C:\Users\Usuario\source\repos\MusicApp\Presentation\bin\Debug\net6.0-windows\NAudio.WinForms.dll
+C:\Users\Usuario\source\repos\MusicApp\Presentation\bin\Debug\net6.0-windows\NAudio.WinMM.dll

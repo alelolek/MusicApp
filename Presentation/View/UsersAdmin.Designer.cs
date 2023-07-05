@@ -82,6 +82,7 @@
 			// 
 			// cbxRole
 			// 
+			cbxRole.DropDownStyle = ComboBoxStyle.DropDownList;
 			cbxRole.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
 			cbxRole.FormattingEnabled = true;
 			cbxRole.Location = new Point(61, 269);
