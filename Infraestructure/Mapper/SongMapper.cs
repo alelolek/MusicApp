@@ -20,6 +20,7 @@ namespace Infraestructure.Mapper
 				Artist = new Artist{Id = dto.Artist.Id},
 				Album = new Album{Id = dto.Album.Id},
 				Category = new Category { Id = dto.Category.Id },
+				UrlSong = dto.UrlSong,
 			};
 		}
 
@@ -45,7 +46,8 @@ namespace Infraestructure.Mapper
 				{ 
 					Id = song.Category.Id,
 					Name = song.Category.Name
-				}
+				},
+				UrlSong = song.UrlSong,
 			};
 
 

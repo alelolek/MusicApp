@@ -1,14 +1,18 @@
 ﻿
 
 using System.Windows.Forms;
+using Business.Interface;
+using Business.Services;
 
 namespace Presentation.View
 {
 	public partial class SongAdmin : UserControl
 	{
+		private readonly ISongService songService;
 		public SongAdmin()
 		{
 			InitializeComponent();
+			songService = new SongService();
 		}
 
 
@@ -26,17 +30,18 @@ namespace Presentation.View
 
 		private void SongAdmin_Load(object sender, EventArgs e)
 		{
-			//// Crear una instancia de DataGridViewComboBoxColumn
-			//DataGridViewComboBoxColumn comboBoxColumn = new DataGridViewComboBoxColumn();
-			//comboBoxColumn.HeaderText = "Opciones";
-
-			//// Agregar opciones al ComboBox de la cabecera
-			//comboBoxColumn.Items.Add("Opción 1");
-			//comboBoxColumn.Items.Add("Opción 2");
-			//comboBoxColumn.Items.Add("Opción 3");
-
-			//// Agregar la columna al DataGridView
-			//dgvSongs.Columns.Add(comboBoxColumn);
+			dgvSongs.Columns.Add("id", "Id");
+			dgvSongs.Columns.Add("name", "Name");
+			RecargarGrid();
+		}
+		private void RecargarGrid()
+		{
+			dgvSongs.Rows.Clear();
+			var response = songService.GetAllSong();
+			foreach (var data in response)
+			{
+				dgvSongs.Rows.Add(data.Id, data.Name);
+			}
 		}
 
 		private void dgvSongs_SelectionChanged(object sender, EventArgs e)

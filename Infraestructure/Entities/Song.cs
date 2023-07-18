@@ -9,5 +9,6 @@ namespace Infraestructure.Entities
 		public Artist Artist { get; set; }
 		public Album Album { get; set; }
 		public Category Category { get; set; }
+		public string UrlSong { get; set; }
 	}
 }

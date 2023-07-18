@@ -37,11 +37,10 @@
 			cbxArtist = new ComboBox();
 			artist = new Label();
 			name = new Label();
-			textBox1 = new TextBox();
+			txtName = new TextBox();
 			label1 = new Label();
 			pictureBox2 = new PictureBox();
 			button1 = new Button();
-			panel1 = new Panel();
 			((System.ComponentModel.ISupportInitialize)pictureBoxImage).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			SuspendLayout();
@@ -58,6 +57,7 @@
 			button2.TabIndex = 26;
 			button2.Text = "Save Song";
 			button2.UseVisualStyleBackColor = false;
+			button2.Click += button2_Click;
 			// 
 			// pictureBoxImage
 			// 
@@ -137,14 +137,14 @@
 			name.TabIndex = 17;
 			name.Text = "Song Name";
 			// 
-			// textBox1
+			// txtName
 			// 
-			textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			textBox1.ForeColor = Color.Black;
-			textBox1.Location = new Point(386, 138);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(246, 33);
-			textBox1.TabIndex = 16;
+			txtName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtName.ForeColor = Color.Black;
+			txtName.Location = new Point(386, 138);
+			txtName.Name = "txtName";
+			txtName.Size = new Size(246, 33);
+			txtName.TabIndex = 16;
 			// 
 			// label1
 			// 
@@ -174,7 +174,7 @@
 			button1.FlatStyle = FlatStyle.Popup;
 			button1.Font = new Font("Arial Black", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
 			button1.ForeColor = Color.White;
-			button1.Location = new Point(201, 367);
+			button1.Location = new Point(132, 358);
 			button1.Name = "button1";
 			button1.Size = new Size(143, 40);
 			button1.TabIndex = 25;
@@ -182,21 +182,11 @@
 			button1.UseVisualStyleBackColor = false;
 			button1.Click += button1_Click;
 			// 
-			// panel1
-			// 
-			panel1.Location = new Point(76, 367);
-			panel1.Name = "panel1";
-			panel1.Size = new Size(51, 40);
-			panel1.TabIndex = 28;
-			panel1.Click += panel1_Click;
-			panel1.Paint += panel1_Paint;
-			// 
 			// UploadSong
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(734, 561);
-			Controls.Add(panel1);
 			Controls.Add(pictureBox2);
 			Controls.Add(button2);
 			Controls.Add(button1);
@@ -208,7 +198,7 @@
 			Controls.Add(cbxArtist);
 			Controls.Add(artist);
 			Controls.Add(name);
-			Controls.Add(textBox1);
+			Controls.Add(txtName);
 			Controls.Add(label1);
 			FormBorderStyle = FormBorderStyle.None;
 			Name = "UploadSong";
@@ -231,10 +221,9 @@
 		private ComboBox cbxArtist;
 		private Label artist;
 		private Label name;
-		private TextBox textBox1;
+		private TextBox txtName;
 		private Label label1;
 		private PictureBox pictureBox2;
 		private Button button1;
-		private Panel panel1;
 	}
 }

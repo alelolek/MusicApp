@@ -9,5 +9,7 @@ namespace CrossCuting.DTO
         public ArtistDto Artist { get; set; }
         public AlbumDto Album { get; set; }
         public CategoryDto Category { get; set; }
-    }
+		public string UrlSong { get; set; }
+		public byte[] Song { get; set; }
+	}
 }

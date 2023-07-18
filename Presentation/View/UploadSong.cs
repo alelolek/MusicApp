@@ -7,10 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Business.Interface;
 using Business.Services;
+using CrossCuting.DTO;
 using Infraestructure.Entities;
 using NAudio.Wave;
+using Presentation.Validators;
 
 namespace Presentation.View
 {
@@ -19,14 +22,17 @@ namespace Presentation.View
 		private readonly IArtistService artistService;
 		private readonly IAlbumService albumService;
 		private readonly ICategoryService categoryService;
-		
-		
+		private readonly ISongService songService;
+		private byte[] bytesMusica;
+
+
 		public UploadSong()
 		{
 			InitializeComponent();
 			artistService = new ArtistService();
 			albumService = new AlbumService();
 			categoryService = new CategoryService();
+			songService = new SongService();
 
 
 			var artists = artistService.GetAllArtist();
@@ -82,66 +88,85 @@ namespace Presentation.View
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			var rutaCancion = "C:\\Users\\Usuario\\Documents\\music\\aaaaa.mp3";
-			ReproducirCancionDesdeRuta( rutaCancion);
-		}
-		private void ReproducirCancionDesdeRuta(string rutaCancion)
-		{
-			using (var audioFile = new AudioFileReader(rutaCancion))
-			using (var outputDevice = new WaveOutEvent())
-			{
-				outputDevice.Init(audioFile);
-				outputDevice.Play();
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+			openFileDialog.Filter = "Archivos de música (*.mp3)|*.mp3";
 
-				// Opcional: Puedes esperar a que la canción termine de reproducirse antes de finalizar el método
-				while (outputDevice.PlaybackState == PlaybackState.Playing)
-				{
-					System.Threading.Thread.Sleep(100);
-				}
+			if (openFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				string rutaArchivo = openFileDialog.FileName;
+				bytesMusica = ConvertirMusicaABytes(rutaArchivo);
+
 			}
 		}
 
+
 		private void panel1_Paint(object sender, PaintEventArgs e)
 		{
-			
+
+		}
+
+		public byte[] ConvertirMusicaABytes(string rutaArchivo)
+		{
+			using (FileStream fs = new FileStream(rutaArchivo, FileMode.Open, FileAccess.Read))
+			{
+				bytesMusica = new byte[fs.Length];
+				fs.Read(bytesMusica, 0, (int)fs.Length);
+			}
+
+			return bytesMusica;
 		}
 
 		private void panel1_Click(object sender, EventArgs e)
 		{
 
-			OpenFileDialog openFileDialog = new OpenFileDialog();
-			openFileDialog.Filter = "Archivos de audio|*.mp3"; // Filtro de archivos de audio MP3
-			openFileDialog.Title = "Seleccionar canción";
 
-			if (openFileDialog.ShowDialog() == DialogResult.OK)
-			{
-				string rutaCancion = openFileDialog.FileName;
-				ReproducirCancion(rutaCancion); // Llamada al método de reproducción de canciones
-			}
-			//if (!string.IsNullOrEmpty(rutaCancion))
-			//{
-			//	using (var audioFile = new AudioFileReader(rutaCancion))
-			//	using (var outputDevice = new WaveOutEvent())
-			//	{
-			//		outputDevice.Init(audioFile);
-			//		outputDevice.Play();
-			//	}
-			//	panel1.Visible = true; // Mostrar la imagen en el panel
-			//}
-			//else
-			//{
-			//	MessageBox.Show("No se ha seleccionado ninguna canción.");
-			//	panel1.Visible = false; // Ocultar la imagen en el panel
-			//}
 		}
-		private void ReproducirCancion(string rutaCancion)
+		public void Guardar()
 		{
-			using (var audioFileReader = new AudioFileReader(rutaCancion))
-			using (var outputDevice = new WaveOutEvent())
+			bool camposVacios = Validation.CamposVacios(txtName);
+
+			if (camposVacios)
 			{
-				outputDevice.Init(audioFileReader);
-				outputDevice.Play();
+				MessageBox.Show("Por favor, complete todos los campos obligatorios.");
+				return;
 			}
+
+			var artists = artistService.GetAllArtist();
+			var artist = artists.FirstOrDefault(a => a.Name == cbxArtist.SelectedItem.ToString());
+
+			var albums = albumService.GetAllAlbums();
+			var album = albums.FirstOrDefault(a => a.Name == cbxAlbum.SelectedItem.ToString());
+
+			var categories = categoryService.GetAllCategory();
+			var category = categories.FirstOrDefault(a => a.Name == cbxCategories.SelectedItem.ToString());
+
+			var song = new SongDto()
+			{
+				Name = txtName.Text,
+				Artist = artist,
+				Album = album,
+				Category = category,
+				Song = bytesMusica
+			};
+			var response = songService.CreateSong(song);
+			txtName.Clear();
+
+			if (response.Errors.Any())
+			{
+				foreach (var error in response.Errors)
+				{
+					MessageBox.Show(error.Value);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Registrado con éxito");
+			}
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			Guardar();
 		}
 	}
 }

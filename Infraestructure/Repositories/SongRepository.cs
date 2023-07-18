@@ -33,18 +33,21 @@ namespace Infraestructure.Repositories
 					song.Artist = new Artist
 					{
 						Id = reader.GetInt32(2),
-						UrlImage = reader.GetString(3),
+						Name = reader.GetString(3),
+						UrlImage = reader.GetString(4),
 					};
 					song.Album = new Album
 					{
-						Id = reader.GetInt32(4),
-						UrlImage = reader.GetString(5),
+						Id = reader.GetInt32(5),
+						Name = reader.GetString(6),
+						UrlImage = reader.GetString(7),
 					};
 					song.Category = new Category
 					{
-						Id = reader.GetInt32(6),
-						Name = reader.GetString(7),
+						Id = reader.GetInt32(8),
+						Name = reader.GetString(9),
 					};
+					song.UrlSong = reader.GetString(10);
 					var songDto = mapper.MapEntityToDto(song);
 					songsDto.Add(songDto);
 				}
@@ -102,13 +105,14 @@ namespace Infraestructure.Repositories
 			var song = mapper.MapDtoToEntity(songsDto);
 			try
 			{
-				var query = "INSERT INTO Song(Name,Artist_Id,Album_Id,Category_Id) VALUES(@name,@artist,@album,@category)";
+				var query = "INSERT INTO Song(Name,Artist_Id,Album_Id,Category_Id,UrlSong) VALUES(@name,@artist,@album,@category,@urlsong)";
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
 					command.Parameters.AddWithValue("@name", song.Name);
 					command.Parameters.AddWithValue("@artist", song.Artist.Id);
 					command.Parameters.AddWithValue("@album", song.Album.Id);
 					command.Parameters.AddWithValue("@category", song.Category.Id);
+					command.Parameters.AddWithValue("@urlsong", song.UrlSong);
 					connection.Open();
 					command.ExecuteNonQuery();
 					connection.Close();
