@@ -37,7 +37,12 @@ namespace Presentation.View
 				if (accountDto.rol == "Administrador")
 					homeAdmin.Show();
 				else
+				{
+					Label label = homeUser.idAccount;
+					label.Text = accountDto.id.ToString();
 					homeUser.Show();
+
+				}
 				this.Hide();
 			}
 			else

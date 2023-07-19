@@ -30,7 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoriesUser));
 			label12 = new Label();
-			textBox1 = new TextBox();
+			txtBuscar = new TextBox();
 			pictureBox1 = new PictureBox();
 			flowLayoutPanel1 = new FlowLayoutPanel();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -47,13 +47,13 @@
 			label12.TabIndex = 3;
 			label12.Text = "CATEGORIES";
 			// 
-			// textBox1
+			// txtBuscar
 			// 
-			textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			textBox1.Location = new Point(399, 119);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(266, 33);
-			textBox1.TabIndex = 4;
+			txtBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtBuscar.Location = new Point(399, 119);
+			txtBuscar.Name = "txtBuscar";
+			txtBuscar.Size = new Size(266, 33);
+			txtBuscar.TabIndex = 4;
 			// 
 			// pictureBox1
 			// 
@@ -69,9 +69,9 @@
 			// 
 			// flowLayoutPanel1
 			// 
-			flowLayoutPanel1.Location = new Point(36, 222);
+			flowLayoutPanel1.Location = new Point(36, 201);
 			flowLayoutPanel1.Name = "flowLayoutPanel1";
-			flowLayoutPanel1.Size = new Size(629, 376);
+			flowLayoutPanel1.Size = new Size(629, 397);
 			flowLayoutPanel1.TabIndex = 6;
 			// 
 			// CategoriesUser
@@ -81,7 +81,7 @@
 			BackColor = Color.White;
 			Controls.Add(flowLayoutPanel1);
 			Controls.Add(pictureBox1);
-			Controls.Add(textBox1);
+			Controls.Add(txtBuscar);
 			Controls.Add(label12);
 			Name = "CategoriesUser";
 			Size = new Size(705, 650);
@@ -94,7 +94,7 @@
 		#endregion
 
 		private Label label12;
-		private TextBox textBox1;
+		private TextBox txtBuscar;
 		private PictureBox pictureBox1;
 		private FlowLayoutPanel flowLayoutPanel1;
 	}

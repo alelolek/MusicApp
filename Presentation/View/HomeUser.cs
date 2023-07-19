@@ -7,15 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using Business.Interface;
+using Business.Services;
 using CrossCuting.DTO;
+using Infraestructure.Entities;
 
 namespace Presentation.View
 {
 	public partial class HomeUser : Form
 	{
+		private readonly IAccountService accountService;
+		private AccountDto usuario;
 		public HomeUser()
 		{
 			InitializeComponent();
+			accountService = new AccountService();
 			Home home = new Home();
 			addUserControl(home);
 
@@ -44,7 +51,10 @@ namespace Presentation.View
 
 		private void label6_Click(object sender, EventArgs e)
 		{
+
 			SongUser song = new SongUser();
+			Label label = song.lbId;
+			label.Text = idAccount.Text;
 			addUserControl(song);
 		}
 
@@ -57,12 +67,21 @@ namespace Presentation.View
 		private void label10_Click(object sender, EventArgs e)
 		{
 			ForYouUser forYou = new ForYouUser();
+			Label label = forYou.lbId;
+			label.Text = idAccount.Text;
 			addUserControl(forYou);
 		}
 
 		private void label9_Click(object sender, EventArgs e)
 		{
+
+			var usuarios = accountService.GetAllAccount();
+			usuario = usuarios.FirstOrDefault(a => a.id == Convert.ToInt32(idAccount.Text));
+
+			var texto = usuario.username;
 			Home home = new Home();
+			Label label = home.lbNombre;
+			label.Text = texto;
 			addUserControl(home);
 		}
 
@@ -77,11 +96,29 @@ namespace Presentation.View
 
 		private void HomeUser_Load(object sender, EventArgs e)
 		{
+			var usuarios = accountService.GetAllAccount();
+			usuario = usuarios.FirstOrDefault(a => a.id == Convert.ToInt32(idAccount.Text));
 
-			Login login = new Login();
+			user.Text = usuario.username;
+
+			var texto = usuario.username;
+			Home home = new Home();
+			Label label = home.lbNombre;
+			label.Text = texto;
+			addUserControl(home);
 		}
 
 		private void pictureBox5_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void panelContainer_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
+		private void panel2_Paint(object sender, PaintEventArgs e)
 		{
 
 		}

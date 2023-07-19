@@ -30,9 +30,9 @@ namespace Presentation.View
 
 		private void SongAdmin_Load(object sender, EventArgs e)
 		{
-			dgvSongs.Columns.Add("id", "Id");
-			dgvSongs.Columns.Add("name", "Name");
-			RecargarGrid();
+			//dgvSongs.Columns.Add("id", "Id");
+			//dgvSongs.Columns.Add("name", "Name");
+			//RecargarGrid();
 		}
 		private void RecargarGrid()
 		{
@@ -47,6 +47,11 @@ namespace Presentation.View
 		private void dgvSongs_SelectionChanged(object sender, EventArgs e)
 		{
 
+		}
+
+		private void pictureBox1_Click(object sender, EventArgs e)
+		{
+			
 		}
 	}
 }

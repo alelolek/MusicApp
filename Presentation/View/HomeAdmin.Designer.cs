@@ -44,9 +44,6 @@
 			label9 = new Label();
 			pictureBox2 = new PictureBox();
 			pictureBox6 = new PictureBox();
-			panelAcUser = new Panel();
-			label10 = new Label();
-			pictureBox7 = new PictureBox();
 			btnSong = new Panel();
 			btnCategory = new Panel();
 			btnArtist = new Panel();
@@ -58,8 +55,6 @@
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-			panelAcUser.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
 			btnSong.SuspendLayout();
 			btnCategory.SuspendLayout();
 			btnArtist.SuspendLayout();
@@ -238,35 +233,6 @@
 			pictureBox6.TabIndex = 16;
 			pictureBox6.TabStop = false;
 			// 
-			// panelAcUser
-			// 
-			panelAcUser.Controls.Add(label10);
-			panelAcUser.Controls.Add(pictureBox7);
-			panelAcUser.Location = new Point(2, 395);
-			panelAcUser.Name = "panelAcUser";
-			panelAcUser.Size = new Size(221, 48);
-			panelAcUser.TabIndex = 17;
-			panelAcUser.Click += panelAcUser_Click;
-			// 
-			// label10
-			// 
-			label10.AutoSize = true;
-			label10.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			label10.Location = new Point(56, 3);
-			label10.Name = "label10";
-			label10.Size = new Size(124, 25);
-			label10.TabIndex = 1;
-			label10.Text = "Account User";
-			// 
-			// pictureBox7
-			// 
-			pictureBox7.Image = Properties.Resources.usuario_verificado;
-			pictureBox7.Location = new Point(20, 3);
-			pictureBox7.Name = "pictureBox7";
-			pictureBox7.Size = new Size(26, 33);
-			pictureBox7.TabIndex = 0;
-			pictureBox7.TabStop = false;
-			// 
 			// btnSong
 			// 
 			btnSong.Controls.Add(pictureBox6);
@@ -328,7 +294,6 @@
 			Controls.Add(btnArtist);
 			Controls.Add(btnCategory);
 			Controls.Add(btnSong);
-			Controls.Add(panelAcUser);
 			Controls.Add(label9);
 			Controls.Add(label3);
 			Controls.Add(label2);
@@ -347,9 +312,6 @@
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-			panelAcUser.ResumeLayout(false);
-			panelAcUser.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
 			btnSong.ResumeLayout(false);
 			btnSong.PerformLayout();
 			btnCategory.ResumeLayout(false);
@@ -382,9 +344,6 @@
 		private PictureBox pictureBox4;
 		private PictureBox pictureBox5;
 		private PictureBox pictureBox6;
-		private Panel panelAcUser;
-		private Label label10;
-		private PictureBox pictureBox7;
 		private Panel btnSong;
 		private Panel btnCategory;
 		private Panel btnArtist;

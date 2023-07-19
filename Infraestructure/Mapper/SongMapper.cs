@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using CrossCuting.DTO;
 using Infraestructure.Entities;
 using Infraestructure.Interface;
@@ -33,19 +29,19 @@ namespace Infraestructure.Mapper
 				Artist = new ArtistDto 
 				{
 					Id = song.Artist.Id,
-					Name = song.Artist.Name,
-					UrlImage = song.Artist.UrlImage
+					//Name = song.Artist.Name,
+					//UrlImage = song.Artist.UrlImage
 				},
 				Album = new AlbumDto 
 				{
 					Id = song.Album.Id,
-					Name = song.Album.Name,
-					UrlImage = song.Album.UrlImage
+					//Name = song.Album.Name,
+					//UrlImage = song.Album.UrlImage
 				},
 				Category = new CategoryDto 
 				{ 
 					Id = song.Category.Id,
-					Name = song.Category.Name
+					//Name = song.Category.Name
 				},
 				UrlSong = song.UrlSong,
 			};

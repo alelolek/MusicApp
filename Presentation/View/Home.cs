@@ -17,9 +17,8 @@ namespace Presentation.View
 			InitializeComponent();
 		}
 
-		private void label2_Click(object sender, EventArgs e)
+		private void Home_Leave(object sender, EventArgs e)
 		{
-
 		}
 	}
 }

@@ -52,7 +52,7 @@
 			txtBuscar.BackColor = Color.White;
 			txtBuscar.BorderStyle = BorderStyle.FixedSingle;
 			txtBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			txtBuscar.ForeColor = Color.FromArgb(128, 128, 255);
+			txtBuscar.ForeColor = Color.Black;
 			txtBuscar.Location = new Point(394, 124);
 			txtBuscar.Name = "txtBuscar";
 			txtBuscar.Size = new Size(261, 33);

@@ -1,16 +1,19 @@
 ﻿using Business.Interface;
 using Business.Services;
 using CrossCuting.DTO;
+using Infraestructure.Entities;
 
 namespace Presentation.View
 {
 	public partial class AlbumUser : UserControl
 	{
 		private IAlbumService albumService;
+		private ISongService songService;
 		public AlbumUser()
 		{
 			InitializeComponent();
 			albumService = new AlbumService();
+			songService = new SongService();
 		}
 
 
@@ -32,7 +35,14 @@ namespace Presentation.View
 
 		private void AbrirNuevaPestaña(AlbumDto cancion)
 		{
-			MusicPlayer hu = new MusicPlayer();
+			var canciones = songService.GetAllSong().Where(a => a.Album.Id==cancion.Id).ToList();
+			var cancionId = songService.GetAllSong().FirstOrDefault(a => a.Album.Id == cancion.Id);
+
+			MusicPlayer hu = new MusicPlayer(canciones);
+
+			Label label = hu.lbSong;
+			label.Text = cancionId.Id.ToString();
+
 			hu.ShowDialog();
 			flowLayoutPanel1.Controls.Clear();
 			CargarAlbum();
@@ -86,6 +96,11 @@ namespace Presentation.View
 
 		private void pictureBox1_Click(object sender, EventArgs e)
 		{
+			Buscar();
+		}
+
+		public void Buscar()
+		{
 			string nombreAlbum = txtBuscar.Text;
 
 			var albums = albumService.GetAllAlbums();
@@ -98,7 +113,6 @@ namespace Presentation.View
 				flowLayoutPanel1.Controls.Add(panel);
 				txtBuscar.Clear();
 				//flowLayoutPanel1.Controls.Clear();
-
 			}
 			else
 			{

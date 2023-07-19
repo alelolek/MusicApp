@@ -33,21 +33,16 @@ namespace Infraestructure.Repositories
 					song.Artist = new Artist
 					{
 						Id = reader.GetInt32(2),
-						Name = reader.GetString(3),
-						UrlImage = reader.GetString(4),
 					};
 					song.Album = new Album
 					{
-						Id = reader.GetInt32(5),
-						Name = reader.GetString(6),
-						UrlImage = reader.GetString(7),
+						Id = reader.GetInt32(3),
 					};
 					song.Category = new Category
 					{
-						Id = reader.GetInt32(8),
-						Name = reader.GetString(9),
+						Id = reader.GetInt32(4),
 					};
-					song.UrlSong = reader.GetString(10);
+					song.UrlSong = reader.GetString(5);
 					var songDto = mapper.MapEntityToDto(song);
 					songsDto.Add(songDto);
 				}

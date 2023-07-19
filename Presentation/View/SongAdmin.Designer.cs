@@ -30,7 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SongAdmin));
 			label1 = new Label();
-			textBox1 = new TextBox();
+			txtBuscar = new TextBox();
 			pictureBox1 = new PictureBox();
 			dgvSongs = new DataGridView();
 			pictureBox2 = new PictureBox();
@@ -54,15 +54,14 @@
 			label1.TabIndex = 2;
 			label1.Text = "SONGS";
 			// 
-			// textBox1
+			// txtBuscar
 			// 
-			textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-			textBox1.ForeColor = SystemColors.AppWorkspace;
-			textBox1.Location = new Point(403, 124);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(245, 33);
-			textBox1.TabIndex = 3;
-			textBox1.Text = "Buscar";
+			txtBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+			txtBuscar.ForeColor = SystemColors.AppWorkspace;
+			txtBuscar.Location = new Point(403, 124);
+			txtBuscar.Name = "txtBuscar";
+			txtBuscar.Size = new Size(245, 33);
+			txtBuscar.TabIndex = 3;
 			// 
 			// pictureBox1
 			// 
@@ -74,6 +73,7 @@
 			pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
 			pictureBox1.TabIndex = 4;
 			pictureBox1.TabStop = false;
+			pictureBox1.Click += pictureBox1_Click;
 			// 
 			// dgvSongs
 			// 
@@ -130,7 +130,7 @@
 			Controls.Add(pictureBox2);
 			Controls.Add(dgvSongs);
 			Controls.Add(pictureBox1);
-			Controls.Add(textBox1);
+			Controls.Add(txtBuscar);
 			Controls.Add(label1);
 			Name = "SongAdmin";
 			Size = new Size(705, 650);
@@ -153,5 +153,6 @@
 		private PictureBox pictureBox3;
 		private PictureBox btnAddSong;
 		public DataGridView dgvSongs;
+		private TextBox txtBuscar;
 	}
 }

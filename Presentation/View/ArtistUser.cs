@@ -1,16 +1,19 @@
 ﻿using Business.Interface;
 using Business.Services;
 using CrossCuting.DTO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Presentation.View
 {
 	public partial class ArtistUser : UserControl
 	{
+		private readonly ISongService songService;
 		private IArtistService artistService;
 		public ArtistUser()
 		{
 			InitializeComponent();
 			artistService = new ArtistService();
+			songService = new SongService();
 		}
 
 		private void textBox1_TextChanged(object sender, EventArgs e)
@@ -77,8 +80,8 @@ namespace Presentation.View
 			PictureBox pictureBox = new PictureBox();
 			pictureBox.Dock = DockStyle.Top;
 			pictureBox.Size = new Size(160, 120);
-			pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-			pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+			pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+			//pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
 
 
 			string nombreAlbum = artists.Name;
@@ -96,9 +99,17 @@ namespace Presentation.View
 			return panel;
 		}
 
-		private void AbrirNuevaPestaña(ArtistDto artist)
+		private void AbrirNuevaPestaña(ArtistDto artists)
 		{
-			MusicPlayer hu = new MusicPlayer();
+			
+			var canciones = songService.GetAllSong();
+			var cancion = canciones.FirstOrDefault(a => a.Artist.Id == artists.Id);
+
+			var cancionesPorArtista = canciones.Where(a => a.Artist.Id == artists.Id).ToList();
+
+			MusicPlayer hu = new MusicPlayer(cancionesPorArtista);
+			Label label = hu.lbSong;
+			label.Text = cancion.Id.ToString();
 			hu.ShowDialog();
 			flowLayoutPanel1.Controls.Clear();
 			RecargarArtist();

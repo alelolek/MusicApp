@@ -16,7 +16,7 @@ namespace Infraestructure.Mapper
 			return new Category
 			{
 				Id =dto.Id,
-				Name = dto.Name,
+				Name = dto.Name
 			};
 		}
 
@@ -25,7 +25,7 @@ namespace Infraestructure.Mapper
 			return new CategoryDto
 			{
 				Id = category.Id,
-				Name = category.Name,
+				Name = category.Name
 			};
 		}
 	}

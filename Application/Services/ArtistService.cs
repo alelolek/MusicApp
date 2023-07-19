@@ -29,7 +29,6 @@ namespace Business.Services
 			var response = artistRepository.Save(artistDto);
 			return response;
 		}
-
 		public ResponseDto EditArtist(ArtistDto artistDto)
 		{
 			var url = imageService.ActualizarFoto(artistDto.Photo, artistDto);
@@ -38,7 +37,6 @@ namespace Business.Services
 			
 			return response;
 		}
-
 		public ResponseDto DeleteArtist(int artistId)
 		{
 			var response = new ResponseDto();
@@ -47,10 +45,8 @@ namespace Business.Services
 			var url = objeto.UrlImage;
 			imageService.EliminarImagenPorUrl(url);
 			response = artistRepository.Delete(artistId);
-			
 			return response;
 		}
-
 		public List<ArtistDto> GetAllArtist()
 		{
 			List<ArtistDto> artist;

@@ -29,6 +29,8 @@
 		private void InitializeComponent()
 		{
 			panelContainer = new Panel();
+			idAccount = new Label();
+			lbNameAccount = new Label();
 			panel5 = new Panel();
 			label5 = new Label();
 			pictureBox3 = new PictureBox();
@@ -36,7 +38,7 @@
 			label6 = new Label();
 			pictureBox4 = new PictureBox();
 			pictureBox1 = new PictureBox();
-			label1 = new Label();
+			user = new Label();
 			label2 = new Label();
 			label3 = new Label();
 			label4 = new Label();
@@ -54,6 +56,7 @@
 			panel2 = new Panel();
 			panel3 = new Panel();
 			panel6 = new Panel();
+			panelContainer.SuspendLayout();
 			panel5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
 			panel4.SuspendLayout();
@@ -72,18 +75,38 @@
 			// panelContainer
 			// 
 			panelContainer.BackColor = Color.White;
+			panelContainer.Controls.Add(idAccount);
+			panelContainer.Controls.Add(lbNameAccount);
 			panelContainer.Location = new Point(231, 0);
 			panelContainer.Name = "panelContainer";
 			panelContainer.Size = new Size(705, 650);
 			panelContainer.TabIndex = 0;
+			panelContainer.Paint += panelContainer_Paint;
+			// 
+			// idAccount
+			// 
+			idAccount.AutoSize = true;
+			idAccount.Location = new Point(112, 57);
+			idAccount.Name = "idAccount";
+			idAccount.Size = new Size(44, 15);
+			idAccount.TabIndex = 2;
+			idAccount.Text = "label12";
+			// 
+			// lbNameAccount
+			// 
+			lbNameAccount.AutoSize = true;
+			lbNameAccount.Location = new Point(225, 238);
+			lbNameAccount.Name = "lbNameAccount";
+			lbNameAccount.Size = new Size(0, 15);
+			lbNameAccount.TabIndex = 1;
 			// 
 			// panel5
 			// 
 			panel5.Controls.Add(label5);
 			panel5.Controls.Add(pictureBox3);
-			panel5.Location = new Point(1, 194);
+			panel5.Location = new Point(11, 194);
 			panel5.Name = "panel5";
-			panel5.Size = new Size(224, 49);
+			panel5.Size = new Size(214, 49);
 			panel5.TabIndex = 0;
 			// 
 			// label5
@@ -112,9 +135,9 @@
 			// 
 			panel4.Controls.Add(label6);
 			panel4.Controls.Add(pictureBox4);
-			panel4.Location = new Point(1, 239);
+			panel4.Location = new Point(9, 239);
 			panel4.Name = "panel4";
-			panel4.Size = new Size(224, 49);
+			panel4.Size = new Size(216, 49);
 			panel4.TabIndex = 0;
 			// 
 			// label6
@@ -147,16 +170,16 @@
 			pictureBox1.TabIndex = 1;
 			pictureBox1.TabStop = false;
 			// 
-			// label1
+			// user
 			// 
-			label1.AutoSize = true;
-			label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-			label1.ForeColor = Color.White;
-			label1.Location = new Point(101, 32);
-			label1.Name = "label1";
-			label1.Size = new Size(54, 30);
-			label1.TabIndex = 2;
-			label1.Text = "User";
+			user.AutoSize = true;
+			user.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+			user.ForeColor = Color.White;
+			user.Location = new Point(101, 32);
+			user.Name = "user";
+			user.Size = new Size(54, 30);
+			user.TabIndex = 2;
+			user.Text = "User";
 			// 
 			// label2
 			// 
@@ -293,36 +316,37 @@
 			// 
 			panel1.Controls.Add(pictureBox7);
 			panel1.Controls.Add(label10);
-			panel1.Location = new Point(1, 454);
+			panel1.Location = new Point(9, 454);
 			panel1.Name = "panel1";
-			panel1.Size = new Size(224, 49);
+			panel1.Size = new Size(216, 49);
 			panel1.TabIndex = 19;
 			// 
 			// panel2
 			// 
 			panel2.Controls.Add(pictureBox6);
 			panel2.Controls.Add(label9);
-			panel2.Location = new Point(1, 412);
+			panel2.Location = new Point(11, 412);
 			panel2.Name = "panel2";
-			panel2.Size = new Size(224, 49);
+			panel2.Size = new Size(214, 49);
 			panel2.TabIndex = 20;
+			panel2.Paint += panel2_Paint;
 			// 
 			// panel3
 			// 
 			panel3.Controls.Add(pictureBox5);
 			panel3.Controls.Add(label7);
-			panel3.Location = new Point(1, 294);
+			panel3.Location = new Point(9, 294);
 			panel3.Name = "panel3";
-			panel3.Size = new Size(224, 39);
+			panel3.Size = new Size(216, 39);
 			panel3.TabIndex = 0;
 			// 
 			// panel6
 			// 
 			panel6.Controls.Add(label4);
 			panel6.Controls.Add(pictureBox2);
-			panel6.Location = new Point(1, 147);
+			panel6.Location = new Point(11, 146);
 			panel6.Name = "panel6";
-			panel6.Size = new Size(224, 49);
+			panel6.Size = new Size(214, 49);
 			panel6.TabIndex = 21;
 			// 
 			// HomeUser
@@ -341,13 +365,16 @@
 			Controls.Add(label8);
 			Controls.Add(label3);
 			Controls.Add(label2);
-			Controls.Add(label1);
+			Controls.Add(user);
 			Controls.Add(pictureBox1);
 			Controls.Add(panelContainer);
+			FormBorderStyle = FormBorderStyle.None;
 			Name = "HomeUser";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "HomeUser";
 			Load += HomeUser_Load;
+			panelContainer.ResumeLayout(false);
+			panelContainer.PerformLayout();
 			panel5.ResumeLayout(false);
 			panel5.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -375,7 +402,7 @@
 
 		private Panel panelContainer;
 		private PictureBox pictureBox1;
-		private Label label1;
+		private Label user;
 		private Label label2;
 		private Label label3;
 		private Label label4;
@@ -399,5 +426,8 @@
 		private Panel panel4;
 		private Panel panel5;
 		private Panel panel6;
+		private Label lblMensaje;
+		public Label lbNameAccount;
+		public Label idAccount;
 	}
 }

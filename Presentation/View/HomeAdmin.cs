@@ -112,10 +112,6 @@ namespace Presentation.View
 			addUserControl(song);
 		}
 
-		private void panelAcUser_Click(object sender, EventArgs e)
-		{
-			HomeUser homeUser = new HomeUser();
-			homeUser.Show();
-		}
+
 	}
 }
