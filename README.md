@@ -36,6 +36,10 @@ El proyecto **MusicApp** utiliza una base de datos SQL Server para almacenar y g
 
 Puedes encontrar el diseño de interfaz de **MusicApp** en el siguiente enlace de Figma: [Diseño Figma](https://www.figma.com/file/P2DVoMPE8s7puQZaWFWfXU/MusicApp?type=design&node-id=21%3A960&mode=design&t=epGuNrnKAjKdsesh-1).
 
+## Demostración Proyecto MusicApp
+
+[Aplicación de Windows Forms con .Net Core y conexión a SQL Server - MusicApp](https://youtu.be/BYTVJgXpydI)
+
 ## Requisitos del sistema
 
 - Windows 10 o posterior.
