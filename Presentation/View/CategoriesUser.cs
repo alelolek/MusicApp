@@ -11,11 +11,13 @@ namespace Presentation.View
 	{
 		private ICategoryService categoryService;
 		private ISongService songService;
+		private IAlbumService albumService;
 		public CategoriesUser()
 		{
 			InitializeComponent();
 			categoryService = new CategoryService();
 			songService = new SongService();
+			albumService = new AlbumService();
 		}
 
 		private void pictureBox1_Click(object sender, EventArgs e)
@@ -46,12 +48,31 @@ namespace Presentation.View
 			MusicPlayer hu = new MusicPlayer(cancionesPorCategory);
 			Label label = hu.lbSong;
 			label.Text = cancion.Id.ToString();
-			hu.ShowDialog();
+
+            var album = albumService.GetAllAlbums().FirstOrDefault(a => a.Id == cancion.Album.Id);
+
+            var imagen = ConvertirBytesAImagen(album.Photo);
+
+            PictureBox pic = hu.pbxImageSong;
+            pic.Image = imagen;
+            pic.SizeMode = PictureBoxSizeMode.Zoom;
+            
+
+            hu.ShowDialog();
 			flowLayoutPanel1.Controls.Clear();
 			CargarCategory();
 		}
 
-		private void CategoriesUser_Load(object sender, EventArgs e)
+        public Image ConvertirBytesAImagen(byte[] imagenBytes)
+        {
+            using (MemoryStream ms = new MemoryStream(imagenBytes))
+            {
+                Image imagen = Image.FromStream(ms);
+                return imagen;
+            }
+        }
+
+        private void CategoriesUser_Load(object sender, EventArgs e)
 		{
 			CargarCategory();
 		}

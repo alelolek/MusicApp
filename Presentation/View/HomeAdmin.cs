@@ -66,6 +66,8 @@ namespace Presentation.View
 			if (resultado == DialogResult.Yes)
 			{
 				this.Close();
+				Login login = new Login();
+				login.ShowDialog();
 			}
 		}
 
@@ -73,6 +75,8 @@ namespace Presentation.View
 		{
 			Login login = new Login();
 			login.Close();
+			UsersAdmin usersAdmin = new UsersAdmin();
+			addUserControl(usersAdmin);
 		}
 
 

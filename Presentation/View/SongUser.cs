@@ -162,7 +162,8 @@ namespace Presentation.View
 
 			PictureBox pic = hu.pbxImageSong;
 			pic.Image = imagen;
-			hu.ShowDialog();
+			pic.SizeMode = PictureBoxSizeMode.Zoom;
+            hu.ShowDialog();
 		}
 
 		public Image ConvertirBytesAImagen(byte[] imagenBytes)

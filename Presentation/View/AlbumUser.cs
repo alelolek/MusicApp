@@ -43,12 +43,23 @@ namespace Presentation.View
 			Label label = hu.lbSong;
 			label.Text = cancionId.Id.ToString();
 
-			hu.ShowDialog();
-			flowLayoutPanel1.Controls.Clear();
-			CargarAlbum();
-		}
+			
 
-		private Panel CrearPanelCancion(AlbumDto cancion)
+			var album = albumService.GetAllAlbums().FirstOrDefault(a => a.Id == cancionId.Album.Id);
+
+            var imagen = ConvertirBytesAImagen(album.Photo);
+
+            PictureBox pic = hu.pbxImageSong;
+            pic.Image = imagen;
+            pic.SizeMode = PictureBoxSizeMode.Zoom;
+            hu.ShowDialog();
+
+            flowLayoutPanel1.Controls.Clear();
+            CargarAlbum();
+		}
+   
+
+        private Panel CrearPanelCancion(AlbumDto cancion)
 		{
 			Panel panel = new Panel();
 			panel.BackColor = Color.White;

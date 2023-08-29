@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace Presentation.View
 {
-	public partial class Home : UserControl
-	{
-		public Home()
-		{
-			InitializeComponent();
-		}
+    public partial class Home : UserControl
+    {
+        public Home()
+        {
+            InitializeComponent();
+        }
 
-		private void Home_Leave(object sender, EventArgs e)
-		{
-		}
-	}
+        private void Home_Leave(object sender, EventArgs e)
+        {
+        }
+    }
 }

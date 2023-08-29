@@ -91,7 +91,9 @@ namespace Presentation.View
 			if (resultado == DialogResult.Yes)
 			{
 				this.Close();
-			}
+                Login login = new Login();
+                login.ShowDialog();
+            }
 		}
 
 		private void HomeUser_Load(object sender, EventArgs e)

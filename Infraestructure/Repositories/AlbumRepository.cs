@@ -1,5 +1,6 @@
 ﻿
 using System.Data.SqlClient;
+using System.Security.Principal;
 using CrossCuting.DTO;
 using CrossCuting.DTO.Standar;
 using Infraestructure.DataBase;
@@ -117,7 +118,8 @@ namespace Infraestructure.Repositories
 				var query = "UPDATE Album SET name = @name, urlImage = @urlImage WHERE id = @id";
 				using (SqlCommand command = new SqlCommand(query, connection))
 				{
-					command.Parameters.AddWithValue("@name", album.Name);
+                    command.Parameters.AddWithValue("@id", album.Id);
+                    command.Parameters.AddWithValue("@name", album.Name);
 					command.Parameters.AddWithValue("@urlImage", album.UrlImage);
 					connection.Open();
 					command.ExecuteNonQuery();

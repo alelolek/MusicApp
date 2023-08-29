@@ -45,7 +45,8 @@ namespace Presentation.View
 		{
 			txtId.Clear();
 			txtName.Clear();
-		}
+            pictureBoxImage.Image = null;
+        }
 
 
 		public void Edit()
@@ -62,7 +63,7 @@ namespace Presentation.View
 					Photo = imageByte,
 				};
 				response = artistService.EditArtist(artist);
-				MessageBox.Show("El Artista fue editado");
+				//MessageBox.Show("El Artista fue editado");
 			}
 			catch (Exception)
 			{

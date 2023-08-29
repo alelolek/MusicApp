@@ -89,8 +89,8 @@ namespace Presentation.View
 			};
 
 			var response = accountService.CreateAccount(account);
-
-			if (response.Errors.Any())
+            RecargarGrid();
+            if (response.Errors.Any())
 			{
 				foreach (var error in response.Errors)
 				{
@@ -100,6 +100,7 @@ namespace Presentation.View
 			else
 			{
 				MessageBox.Show("Registrado con éxito");
+				LimpiarCampos();
 			}
 		}
 

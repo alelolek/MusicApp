@@ -55,7 +55,10 @@ namespace Presentation.View
 
 		private void pictureBox2_Click(object sender, EventArgs e)
 		{
-			this.Close();
+			SongAdmin sa = new SongAdmin();
+			sa.Recargo();
+
+            this.Close();
 		}
 
 		private void cbxAlbum_SelectedIndexChanged(object sender, EventArgs e)
@@ -167,6 +170,12 @@ namespace Presentation.View
 		private void button2_Click(object sender, EventArgs e)
 		{
 			Guardar();
-		}
+			LimpiarCampos();
+        }
+		private void LimpiarCampos()
+		{
+			txtName.Clear();
+            pictureBoxImage.Image = null;
+        }
 	}
 }

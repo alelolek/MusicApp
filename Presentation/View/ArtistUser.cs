@@ -9,11 +9,13 @@ namespace Presentation.View
 	{
 		private readonly ISongService songService;
 		private IArtistService artistService;
+		private IAlbumService albumService;
 		public ArtistUser()
 		{
 			InitializeComponent();
 			artistService = new ArtistService();
 			songService = new SongService();
+			albumService = new AlbumService();
 		}
 
 		private void textBox1_TextChanged(object sender, EventArgs e)
@@ -110,7 +112,17 @@ namespace Presentation.View
 			MusicPlayer hu = new MusicPlayer(cancionesPorArtista);
 			Label label = hu.lbSong;
 			label.Text = cancion.Id.ToString();
-			hu.ShowDialog();
+
+            var album = albumService.GetAllAlbums().FirstOrDefault(a => a.Id == cancion.Album.Id);
+
+            var imagen = ConvertirBytesAImagen(album.Photo);
+
+            PictureBox pic = hu.pbxImageSong;
+            pic.Image = imagen;
+            pic.SizeMode = PictureBoxSizeMode.Zoom;
+
+
+            hu.ShowDialog();
 			flowLayoutPanel1.Controls.Clear();
 			RecargarArtist();
 		}
